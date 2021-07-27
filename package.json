@@ -1,0 +1,12 @@
+{
+    "name": "Web-Server0-19clc7-Team7",
+    "description": "A Node-RED Project",
+    "version": "0.0.1",
+    "dependencies": {},
+    "node-red": {
+        "settings": {
+            "flowFile": "flows_Koa-Laptop.json",
+            "credentialsFile": "flows_Koa-Laptop_cred.json"
+        }
+    }
+}
