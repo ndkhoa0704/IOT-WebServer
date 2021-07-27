@@ -5,5 +5,73 @@
         "label": "Flow 3",
         "disabled": false,
         "info": ""
+    },
+    {
+        "id": "96d6fda7.7e85a",
+        "type": "gauth"
+    },
+    {
+        "id": "74d1d4ce.6e1f6c",
+        "type": "GSheet",
+        "z": "df3448ae.3b3be8",
+        "creds": "96d6fda7.7e85a",
+        "method": "get",
+        "action": "",
+        "sheet": "1-RCkou1-fFh03lOdM4pBDjvVid5J3f6aVKq9PC3tQeE",
+        "cells": "Sheet1!A1:C3",
+        "flatten": false,
+        "name": "",
+        "x": 580,
+        "y": 220,
+        "wires": [
+            [
+                "76007ddb.0992b4"
+            ]
+        ]
+    },
+    {
+        "id": "efee2d2b.be59d",
+        "type": "inject",
+        "z": "df3448ae.3b3be8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 250,
+        "y": 220,
+        "wires": [
+            [
+                "74d1d4ce.6e1f6c"
+            ]
+        ]
+    },
+    {
+        "id": "76007ddb.0992b4",
+        "type": "debug",
+        "z": "df3448ae.3b3be8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 860,
+        "y": 220,
+        "wires": []
     }
 ]
