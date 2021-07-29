@@ -7,6 +7,13 @@
         "info": ""
     },
     {
+        "id": "b040149.50cdce8",
+        "type": "tab",
+        "label": "Wikipedia",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "96d6fda7.7e85a",
         "type": "gauth"
     },
@@ -120,7 +127,7 @@
     {
         "id": "2e22bb38.8d9534",
         "type": "ui_tab",
-        "name": "Home",
+        "name": "Wikipedia",
         "icon": "dashboard",
         "disabled": false,
         "hidden": false
@@ -134,183 +141,6 @@
         "disp": false,
         "width": "10",
         "collapse": false
-    },
-    {
-        "id": "74d1d4ce.6e1f6c",
-        "type": "GSheet",
-        "z": "df3448ae.3b3be8",
-        "creds": "96d6fda7.7e85a",
-        "method": "get",
-        "action": "",
-        "sheet": "1-RCkou1-fFh03lOdM4pBDjvVid5J3f6aVKq9PC3tQeE",
-        "cells": "Sheet1!A2:F6",
-        "flatten": false,
-        "name": "",
-        "x": 450,
-        "y": 220,
-        "wires": [
-            [
-                "1aca9149.0e004f"
-            ]
-        ]
-    },
-    {
-        "id": "c2011606.65cc08",
-        "type": "ui_dropdown",
-        "z": "df3448ae.3b3be8",
-        "name": "",
-        "label": "Fish",
-        "tooltip": "",
-        "place": "Select fish",
-        "group": "80cc5dbc.88601",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "multiple": false,
-        "options": [
-            {
-                "label": "",
-                "value": "",
-                "type": "str"
-            }
-        ],
-        "payload": "",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 810,
-        "y": 220,
-        "wires": [
-            [
-                "851ba9dd.ed0c78"
-            ]
-        ]
-    },
-    {
-        "id": "1aca9149.0e004f",
-        "type": "function",
-        "z": "df3448ae.3b3be8",
-        "name": "GetData",
-        "func": "var tmp1 = []\nvar tmp2 = []\nfor (var i = 0; i < msg.payload.length; i++)\n{\n    var t_obj = {};\n    t_obj[msg.payload[i][0]] = i\n    tmp1.push(t_obj)\n    tmp2.push(msg.payload[i])\n}\nflow.set(\"Fish\",tmp2);\nvar newMsg = {\n    options: tmp1\n}\nreturn newMsg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 640,
-        "y": 220,
-        "wires": [
-            [
-                "c2011606.65cc08"
-            ]
-        ]
-    },
-    {
-        "id": "ae32277e.9af268",
-        "type": "inject",
-        "z": "df3448ae.3b3be8",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 260,
-        "y": 220,
-        "wires": [
-            [
-                "74d1d4ce.6e1f6c"
-            ]
-        ]
-    },
-    {
-        "id": "f463680f.4b8528",
-        "type": "ui_template",
-        "z": "df3448ae.3b3be8",
-        "group": "f8439ecd.7a9c1",
-        "name": "",
-        "order": 2,
-        "width": "0",
-        "height": "0",
-        "format": "<h2>\n    Info:\n</h2>\n<div>\n    <h4 style=\"display: inline;\">Temperature: </h4>\n    <h4 style=\"display: inline;\">{{msg.payload[1]}}</h4>\n    <h4 style=\"display: inline;\"> °C</h4>\n</div>\n<div>\n    <h4 style=\"display: inline;\">pH: </h4>\n    <h4 style=\"display: inline;\">{{msg.payload[2]}}</h4>\n</div>\n<div>\n    <h4 style=\"display: inline;\">Water change: </h4>\n    <h4 style=\"display: inline;\">{{msg.payload[3]}}</h4>\n    <h4 style=\"display: inline;\"> %</h4>\n</div>\n<br>\n<div> {{msg.payload[5]}}</div>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "x": 600,
-        "y": 360,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "851ba9dd.ed0c78",
-        "type": "function",
-        "z": "df3448ae.3b3be8",
-        "name": "PrintData",
-        "func": "var fish = flow.get(\"Fish\")\nvar newMsg = {\n    payload: fish[msg.payload]\n}\nreturn newMsg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 380,
-        "y": 360,
-        "wires": [
-            [
-                "f463680f.4b8528",
-                "a17fab95.6010e8",
-                "78648765.e91e78"
-            ]
-        ]
-    },
-    {
-        "id": "a17fab95.6010e8",
-        "type": "debug",
-        "z": "df3448ae.3b3be8",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 580,
-        "y": 520,
-        "wires": []
-    },
-    {
-        "id": "78648765.e91e78",
-        "type": "ui_template",
-        "z": "df3448ae.3b3be8",
-        "group": "80cc5dbc.88601",
-        "name": "",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "format": "<img src={{msg.payload[4]}}>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "x": 390,
-        "y": 480,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "4ec7a30.496b05c",
@@ -333,8 +163,8 @@
         "topic": "",
         "payload": "hello world",
         "payloadType": "str",
-        "x": 170,
-        "y": 360,
+        "x": 140,
+        "y": 600,
         "wires": [
             [
                 "5522e74d.213b48"
@@ -353,8 +183,167 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 420,
-        "y": 360,
+        "x": 510,
+        "y": 640,
         "wires": []
+    },
+    {
+        "id": "635a98dd.379758",
+        "type": "GSheet",
+        "z": "b040149.50cdce8",
+        "creds": "96d6fda7.7e85a",
+        "method": "get",
+        "action": "",
+        "sheet": "1-RCkou1-fFh03lOdM4pBDjvVid5J3f6aVKq9PC3tQeE",
+        "cells": "Sheet1!A2:F6",
+        "flatten": false,
+        "name": "",
+        "x": 910,
+        "y": 100,
+        "wires": [
+            [
+                "6a79dea.68a202"
+            ]
+        ]
+    },
+    {
+        "id": "914ad8cd.3f4588",
+        "type": "ui_dropdown",
+        "z": "b040149.50cdce8",
+        "name": "",
+        "label": "",
+        "tooltip": "",
+        "place": "Select fish",
+        "group": "80cc5dbc.88601",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "multiple": false,
+        "options": [
+            {
+                "label": "",
+                "value": "",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 1280,
+        "y": 100,
+        "wires": [
+            [
+                "512445d8.40756c"
+            ]
+        ]
+    },
+    {
+        "id": "6a79dea.68a202",
+        "type": "function",
+        "z": "b040149.50cdce8",
+        "name": "GetData",
+        "func": "var tmp1 = []\nvar tmp2 = []\nfor (var i = 0; i < msg.payload.length; i++)\n{\n    var t_obj = {};\n    t_obj[msg.payload[i][0]] = i\n    tmp1.push(t_obj)\n    tmp2.push(msg.payload[i])\n}\nflow.set(\"Fish\",tmp2);\nvar newMsg = {\n    options: tmp1\n}\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1100,
+        "y": 100,
+        "wires": [
+            [
+                "914ad8cd.3f4588"
+            ]
+        ]
+    },
+    {
+        "id": "a1a52f.98b64ad",
+        "type": "inject",
+        "z": "b040149.50cdce8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 720,
+        "y": 100,
+        "wires": [
+            [
+                "635a98dd.379758"
+            ]
+        ]
+    },
+    {
+        "id": "ba4d7178.dc48",
+        "type": "ui_template",
+        "z": "b040149.50cdce8",
+        "group": "f8439ecd.7a9c1",
+        "name": "",
+        "order": 2,
+        "width": "10",
+        "height": "10",
+        "format": "<h2>\n    Info:\n</h2>\n<div>\n    <h4 style=\"display: inline;\">Temperature: </h4>\n    <h4 style=\"display: inline;\">{{msg.payload[1]}}</h4>\n    <h4 style=\"display: inline;\"> °C</h4>\n</div>\n<div>\n    <h4 style=\"display: inline;\">pH: </h4>\n    <h4 style=\"display: inline;\">{{msg.payload[2]}}</h4>\n</div>\n<div>\n    <h4 style=\"display: inline;\">Water change: </h4>\n    <h4 style=\"display: inline;\">{{msg.payload[3]}}</h4>\n    <h4 style=\"display: inline;\"> %</h4>\n</div>\n<br>\n<div> {{msg.payload[5]}}</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 1140,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "512445d8.40756c",
+        "type": "function",
+        "z": "b040149.50cdce8",
+        "name": "PrintData",
+        "func": "var fish = flow.get(\"Fish\")\nvar newMsg = {\n    payload: fish[msg.payload]\n}\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 840,
+        "y": 240,
+        "wires": [
+            [
+                "ba4d7178.dc48",
+                "73f1d52.3ac792c"
+            ]
+        ]
+    },
+    {
+        "id": "73f1d52.3ac792c",
+        "type": "ui_template",
+        "z": "b040149.50cdce8",
+        "group": "80cc5dbc.88601",
+        "name": "",
+        "order": 0,
+        "width": "10",
+        "height": "9",
+        "format": "<img src={{msg.payload[4]}}>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 1140,
+        "y": 320,
+        "wires": [
+            []
+        ]
     }
 ]
