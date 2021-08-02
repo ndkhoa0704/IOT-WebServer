@@ -14,6 +14,13 @@
         "info": ""
     },
     {
+        "id": "27157737.c8f3b8",
+        "type": "tab",
+        "label": "Login",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "96d6fda7.7e85a",
         "type": "gauth"
     },
@@ -180,6 +187,24 @@
         "type": "ui_group",
         "name": "Fish Tank Condition",
         "tab": "eac5fb6a.d348e8",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "4c9b62aa.3406ac",
+        "type": "ui_tab",
+        "name": "Login",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "9bb4db2c.707848",
+        "type": "ui_group",
+        "name": "Login",
+        "tab": "4c9b62aa.3406ac",
         "order": 1,
         "disp": true,
         "width": "6",
@@ -500,19 +525,244 @@
         "id": "438102a9.b3e02c",
         "type": "template",
         "z": "df3448ae.3b3be8",
-        "name": "",
+        "name": "Change color",
         "field": "ui_control",
         "fieldType": "msg",
         "format": "json",
         "syntax": "mustache",
         "template": "{\n    \"options\":{\n        \"waveColor\":\"#994C00\"\n    }\n}",
         "output": "json",
-        "x": 490,
+        "x": 500,
         "y": 340,
         "wires": [
             [
                 "7bf5c94b.e16a68"
             ]
         ]
+    },
+    {
+        "id": "85672d75.e27af",
+        "type": "users_isloggedin",
+        "z": "27157737.c8f3b8",
+        "name": "",
+        "enableCustomHandler": false,
+        "outputs": 1,
+        "x": 380,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ca32e01.f51222",
+        "type": "ui_ui_control",
+        "z": "27157737.c8f3b8",
+        "name": "Login transition",
+        "events": "all",
+        "x": 780,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3015b73.10f6448",
+        "type": "ui_form",
+        "z": "27157737.c8f3b8",
+        "name": "Login form ",
+        "label": "",
+        "group": "9bb4db2c.707848",
+        "order": 0,
+        "width": "6",
+        "height": "6",
+        "options": [
+            {
+                "label": "Username",
+                "value": "username",
+                "type": "text",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Password",
+                "value": "password",
+                "type": "password",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "username": "",
+            "password": ""
+        },
+        "payload": "",
+        "submit": "Login",
+        "cancel": "cancel",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "x": 150,
+        "y": 360,
+        "wires": [
+            [
+                "4f1b2796.f8e7c8"
+            ]
+        ]
+    },
+    {
+        "id": "68f4d953.8f6108",
+        "type": "debug",
+        "z": "27157737.c8f3b8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 470,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "4f1b2796.f8e7c8",
+        "type": "function",
+        "z": "27157737.c8f3b8",
+        "name": "Check login",
+        "func": "msg.login = false;\nif (msg.payload.username == \"admin\" && msg.payload.password==\"admin\"){\n    msg.login= true;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 360,
+        "wires": [
+            [
+                "68f4d953.8f6108",
+                "a2185ffa.923dd"
+            ]
+        ]
+    },
+    {
+        "id": "a2185ffa.923dd",
+        "type": "switch",
+        "z": "27157737.c8f3b8",
+        "name": "Check login",
+        "property": "login",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 470,
+        "y": 420,
+        "wires": [
+            [
+                "3aa46610.d9507a"
+            ]
+        ]
+    },
+    {
+        "id": "3aa46610.d9507a",
+        "type": "function",
+        "z": "27157737.c8f3b8",
+        "name": "Transition",
+        "func": "msg.payload = {\n    tab: \"Condition\",\n    tabs: \n    {\n        hide:[\"Login\"],\n        show:[\"Wikipedia\",\"Condition\"],\n        focus:true\n    }\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 420,
+        "wires": [
+            [
+                "ca32e01.f51222"
+            ]
+        ]
+    },
+    {
+        "id": "1e28f233.106fbe",
+        "type": "inject",
+        "z": "27157737.c8f3b8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 560,
+        "wires": [
+            [
+                "16d1ca6b.6b5386"
+            ]
+        ]
+    },
+    {
+        "id": "16d1ca6b.6b5386",
+        "type": "function",
+        "z": "27157737.c8f3b8",
+        "name": "Login session",
+        "func": "msg.payload = \n{tab:\"Login\",\n tabs: {\n    hide:[\"Wikipedia\",\"Condition\"],\n    show:[\"Login\"],\n    focus:true\n }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 560,
+        "wires": [
+            [
+                "99f2b8e8.2be438",
+                "e2e5a0cb.e4429"
+            ]
+        ]
+    },
+    {
+        "id": "99f2b8e8.2be438",
+        "type": "ui_ui_control",
+        "z": "27157737.c8f3b8",
+        "name": "Login session",
+        "events": "all",
+        "x": 510,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e2e5a0cb.e4429",
+        "type": "debug",
+        "z": "27157737.c8f3b8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 490,
+        "y": 600,
+        "wires": []
     }
 ]
