@@ -2,7 +2,7 @@
     {
         "id": "df3448ae.3b3be8",
         "type": "tab",
-        "label": "Flow 3",
+        "label": "Condition",
         "disabled": false,
         "info": ""
     },
@@ -143,49 +143,47 @@
         "collapse": false
     },
     {
-        "id": "4ec7a30.496b05c",
-        "type": "inject",
-        "z": "df3448ae.3b3be8",
+        "id": "6599e412.12713c",
+        "type": "mqtt-broker",
         "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "hello world",
-        "payloadType": "str",
-        "x": 140,
-        "y": 600,
-        "wires": [
-            [
-                "5522e74d.213b48"
-            ]
-        ]
+        "broker": "broker.mqtt-dashboard.com",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
     },
     {
-        "id": "5522e74d.213b48",
-        "type": "debug",
-        "z": "df3448ae.3b3be8",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 510,
-        "y": 640,
-        "wires": []
+        "id": "eac5fb6a.d348e8",
+        "type": "ui_tab",
+        "name": "Condition",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "76ac188b.7279c8",
+        "type": "ui_group",
+        "name": "Fish Tank Condition",
+        "tab": "eac5fb6a.d348e8",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
     },
     {
         "id": "635a98dd.379758",
@@ -344,6 +342,177 @@
         "y": 320,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "72c943f7.b0a46c",
+        "type": "mqtt in",
+        "z": "df3448ae.3b3be8",
+        "name": "",
+        "topic": "Condition",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "6599e412.12713c",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 160,
+        "y": 280,
+        "wires": [
+            [
+                "b2bf3a48.38e5b8"
+            ]
+        ]
+    },
+    {
+        "id": "b7030c7.0af6ff",
+        "type": "mqtt out",
+        "z": "df3448ae.3b3be8",
+        "name": "",
+        "topic": "Condition",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "6599e412.12713c",
+        "x": 460,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "f52963ae.7ce2d",
+        "type": "inject",
+        "z": "df3448ae.3b3be8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d3ac953.f3ebf68",
+        "type": "debug",
+        "z": "df3448ae.3b3be8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "7ac4529d.753f2c",
+        "type": "ui_gauge",
+        "z": "df3448ae.3b3be8",
+        "name": "",
+        "group": "76ac188b.7279c8",
+        "order": 0,
+        "width": "3",
+        "height": "3",
+        "gtype": "wave",
+        "title": "Water ",
+        "label": "%",
+        "format": "{{msg.payload.water}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 480,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "b2bf3a48.38e5b8",
+        "type": "json",
+        "z": "df3448ae.3b3be8",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 320,
+        "y": 280,
+        "wires": [
+            [
+                "7ac4529d.753f2c",
+                "d3ac953.f3ebf68",
+                "438102a9.b3e02c"
+            ]
+        ]
+    },
+    {
+        "id": "7bf5c94b.e16a68",
+        "type": "ui_gauge",
+        "z": "df3448ae.3b3be8",
+        "name": "",
+        "group": "76ac188b.7279c8",
+        "order": 1,
+        "width": "3",
+        "height": "3",
+        "gtype": "wave",
+        "title": "Food",
+        "label": "%",
+        "format": "{{msg.payload.food}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 640,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "438102a9.b3e02c",
+        "type": "template",
+        "z": "df3448ae.3b3be8",
+        "name": "",
+        "field": "ui_control",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\n    \"options\":{\n        \"waveColor\":\"#994C00\"\n    }\n}",
+        "output": "json",
+        "x": 490,
+        "y": 340,
+        "wires": [
+            [
+                "7bf5c94b.e16a68"
+            ]
         ]
     }
 ]
