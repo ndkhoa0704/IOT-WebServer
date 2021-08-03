@@ -163,6 +163,7 @@
         "cleansession": true,
         "birthTopic": "",
         "birthQos": "0",
+        "birthRetain": "true",
         "birthPayload": "",
         "birthMsg": {},
         "closeTopic": "",
@@ -450,8 +451,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 480,
-        "y": 380,
+        "x": 310,
+        "y": 220,
         "wires": []
     },
     {
@@ -460,7 +461,7 @@
         "z": "df3448ae.3b3be8",
         "name": "",
         "group": "76ac188b.7279c8",
-        "order": 0,
+        "order": 2,
         "width": "3",
         "height": "3",
         "gtype": "wave",
@@ -494,7 +495,9 @@
             [
                 "7ac4529d.753f2c",
                 "d3ac953.f3ebf68",
-                "438102a9.b3e02c"
+                "438102a9.b3e02c",
+                "fdafa21b.a1a62",
+                "5cfd9947.228c98"
             ]
         ]
     },
@@ -694,12 +697,12 @@
         ],
         "repeat": "",
         "crontab": "",
-        "once": true,
+        "once": false,
         "onceDelay": 0.1,
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 110,
+        "x": 100,
         "y": 560,
         "wires": [
             [
@@ -779,5 +782,57 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "fdafa21b.a1a62",
+        "type": "ui_gauge",
+        "z": "df3448ae.3b3be8",
+        "name": "",
+        "group": "76ac188b.7279c8",
+        "order": 3,
+        "width": "3",
+        "height": "3",
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "°C",
+        "format": "{{msg.payload.temp}}",
+        "min": "-50",
+        "max": "50 ",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#cb3a3a"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 490,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "5cfd9947.228c98",
+        "type": "ui_gauge",
+        "z": "df3448ae.3b3be8",
+        "name": "",
+        "group": "76ac188b.7279c8",
+        "order": 4,
+        "width": "3",
+        "height": "3",
+        "gtype": "gage",
+        "title": "pH",
+        "label": "",
+        "format": "{{msg.payload.ph}}",
+        "min": 0,
+        "max": "14",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#cb803a"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 500,
+        "y": 460,
+        "wires": []
     }
 ]
