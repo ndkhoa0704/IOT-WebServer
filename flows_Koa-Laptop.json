@@ -758,58 +758,6 @@
         ]
     },
     {
-        "id": "957aaffd.978a1",
-        "type": "ui_gauge",
-        "z": "df3448ae.3b3be8",
-        "name": "",
-        "group": "76ac188b.7279c8",
-        "order": 3,
-        "width": "3",
-        "height": "3",
-        "gtype": "gage",
-        "title": "pH",
-        "label": "",
-        "format": "{{payload.ph}}",
-        "min": 0,
-        "max": "14",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "x": 630,
-        "y": 280,
-        "wires": []
-    },
-    {
-        "id": "404733e9.5c254c",
-        "type": "ui_gauge",
-        "z": "df3448ae.3b3be8",
-        "name": "",
-        "group": "76ac188b.7279c8",
-        "order": 4,
-        "width": "3",
-        "height": "3",
-        "gtype": "gage",
-        "title": "Temperature",
-        "label": "°C",
-        "format": "{{payload.temp}}",
-        "min": "15",
-        "max": "35",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "x": 610,
-        "y": 340,
-        "wires": []
-    },
-    {
         "id": "6052d29f.d7c6dc",
         "type": "function",
         "z": "8980df89.7c554",
