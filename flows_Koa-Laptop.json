@@ -136,6 +136,7 @@
         "type": "ui_tab",
         "name": "Wikipedia",
         "icon": "dashboard",
+        "order": 2,
         "disabled": false,
         "hidden": false
     },
@@ -179,6 +180,7 @@
         "type": "ui_tab",
         "name": "Condition",
         "icon": "dashboard",
+        "order": 3,
         "disabled": false,
         "hidden": false
     },
@@ -197,6 +199,7 @@
         "type": "ui_tab",
         "name": "Login",
         "icon": "dashboard",
+        "order": 1,
         "disabled": false,
         "hidden": false
     },
@@ -559,9 +562,9 @@
         "name": "Login form ",
         "label": "",
         "group": "9bb4db2c.707848",
-        "order": 0,
-        "width": "6",
-        "height": "6",
+        "order": 1,
+        "width": 6,
+        "height": 1,
         "options": [
             {
                 "label": "Username",
@@ -584,7 +587,7 @@
         },
         "payload": "",
         "submit": "Login",
-        "cancel": "cancel",
+        "cancel": "",
         "topic": "topic",
         "topicType": "msg",
         "splitLayout": "",
@@ -661,7 +664,7 @@
         "type": "function",
         "z": "27157737.c8f3b8",
         "name": "Transition",
-        "func": "msg.payload = {\n    tab: \"Condition\",\n    tabs: \n    {\n        hide:[\"Login\"],\n        show:[\"Wikipedia\",\"Condition\"],\n        focus:true\n    }\n}\n\nreturn msg;",
+        "func": "msg.payload = {\n    tab: \"Condition\",\n    tabs: \n    {\n        enable:[\"Wikipedia\",\"Condition\"],\n        hide:[\"Login\"],\n        show:[\"Wikipedia\",\"Condition\"],\n    }\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -709,7 +712,7 @@
         "type": "function",
         "z": "27157737.c8f3b8",
         "name": "Login session",
-        "func": "msg.payload = \n{tab:\"Login\",\n tabs: {\n    hide:[\"Wikipedia\",\"Condition\"],\n    show:[\"Login\"],\n    focus:true\n }\n}\nreturn msg;",
+        "func": "msg.payload = \n{tab:\"Login\",\n tabs: {\n    disable:[\"Wikipedia\",\"Condition\"],\n    hide:[\"Wikipedia\",\"Condition\"],\n    show:[\"Login\"],\n    focus:true\n }\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -748,7 +751,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 490,
+        "x": 510,
         "y": 600,
         "wires": []
     },
