@@ -477,7 +477,6 @@
         "wires": [
             [
                 "7ac4529d.753f2c",
-                "d3ac953.f3ebf68",
                 "438102a9.b3e02c",
                 "fdafa21b.a1a62",
                 "5cfd9947.228c98",
@@ -808,43 +807,6 @@
         "seg2": "",
         "x": 610,
         "y": 340,
-        "wires": []
-    },
-    {
-        "id": "e9d28e06.c2839",
-        "type": "function",
-        "z": "df3448ae.3b3be8",
-        "name": "temperature",
-        "func": "var tmp = global.get(\"Fish\")\nvar str = tmp[parseInt(global.get(\"Chosen\"))][1]\nvar arr = str.split(\"-\")\nvar newMsg = {\n    ui_control: {\n        max: parseInt(arr[1]),\n        min: parseInt(arr[0])\n    },\n    payload: msg.payload.temp\n}\nreturn newMsg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 370,
-        "y": 300,
-        "wires": [
-            [
-                "404733e9.5c254c",
-                "55f5ce5b.cb69a"
-            ]
-        ]
-    },
-    {
-        "id": "55f5ce5b.cb69a",
-        "type": "debug",
-        "z": "df3448ae.3b3be8",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 390,
-        "y": 360,
         "wires": []
     },
     {
