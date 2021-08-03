@@ -343,10 +343,10 @@
                 "vt": "str"
             }
         ],
-        "repeat": "30",
+        "repeat": "5",
         "crontab": "",
         "once": true,
-        "onceDelay": 0.1,
+        "onceDelay": "1",
         "topic": "",
         "payload": "",
         "payloadType": "date",
@@ -477,7 +477,6 @@
         "wires": [
             [
                 "7ac4529d.753f2c",
-                "d3ac953.f3ebf68",
                 "438102a9.b3e02c",
                 "fdafa21b.a1a62",
                 "5cfd9947.228c98"
@@ -1111,8 +1110,26 @@
         ],
         "seg1": "",
         "seg2": "",
-        "x": 500,
-        "y": 460,
+        "x": 490,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "61938d08.1abbe4",
+        "type": "ui_toast",
+        "z": "8980df89.7c554",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "topic": "",
+        "name": "",
+        "x": 560,
+        "y": 320,
         "wires": []
     }
 ]
