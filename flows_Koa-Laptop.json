@@ -483,7 +483,8 @@
                 "57c593a0.2ed66c",
                 "9edb3015.c8637",
                 "cf55ff0f.0602e",
-                "c80ce104.916eb"
+                "c80ce104.916eb",
+                "2aa4e551.2961ea"
             ]
         ]
     },
@@ -1348,5 +1349,106 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "2aa4e551.2961ea",
+        "type": "function",
+        "z": "df3448ae.3b3be8",
+        "name": "Check",
+        "func": "var setting = global.get(\"setting\")\nmail = \"\"\nif (setting.max_temp < msg.payload.temp)\n    mail += \"Current temperature is higher than usual\\nMaximum: \" + setting.max_temp + \"\\nCurrent: \" +msg.payload.temp + \"\\n\\n\"\n    \nif (setting.max_ph < msg.payload.ph)\n    mail += \"Current pH is higher than usual\\nMaximum: \" + setting.max_ph + \"\\nCurrent: \" +msg.payload.ph + \"\\n\"\n\nif (setting.min_temp > msg.payload.temp)\n    mail += \"Current temperature is lower than usual\\nMinimum: \" + setting.min_temp + \"\\nCurrent: \" +msg.payload.temp + \"\\n\"\n\nif (setting.min_ph > msg.payload.ph)\n    mail += \"Current pH is lower than usual\\nMinimum: \" + setting.min_ph + \"\\nCurrent: \" +msg.payload.ph + \"\\n\"\n\nmsg.payload = mail\nflow.set(\"mail\",mail)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 480,
+        "wires": [
+            [
+                "598ac109.efb69"
+            ]
+        ]
+    },
+    {
+        "id": "598ac109.efb69",
+        "type": "switch",
+        "z": "df3448ae.3b3be8",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 500,
+        "y": 480,
+        "wires": [
+            [],
+            [
+                "9362ca6d.da1b38"
+            ]
+        ]
+    },
+    {
+        "id": "1eddb34c.7d7d1d",
+        "type": "e-mail",
+        "z": "df3448ae.3b3be8",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "tls": true,
+        "name": "",
+        "dname": "",
+        "x": 850,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "9362ca6d.da1b38",
+        "type": "function",
+        "z": "df3448ae.3b3be8",
+        "name": "Package email",
+        "func": "var newMsg = {\n    topic: \"[IAQUARIUM] Dangerous condition\",\n    to: global.get(\"setting\").email,\n    payload: flow.get(\"mail\")\n}\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 480,
+        "wires": [
+            [
+                "1eddb34c.7d7d1d",
+                "cba1a37c.9f2cb"
+            ]
+        ]
+    },
+    {
+        "id": "cba1a37c.9f2cb",
+        "type": "debug",
+        "z": "df3448ae.3b3be8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 540,
+        "wires": []
     }
 ]
