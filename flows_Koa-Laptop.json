@@ -21,6 +21,13 @@
         "info": ""
     },
     {
+        "id": "8980df89.7c554",
+        "type": "tab",
+        "label": "Setting",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "96d6fda7.7e85a",
         "type": "gauth"
     },
@@ -209,6 +216,44 @@
         "name": "Login",
         "tab": "4c9b62aa.3406ac",
         "order": 1,
+        "disp": false,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "67f2a89e.fa4998",
+        "type": "ui_group",
+        "name": "Setup",
+        "tab": "eac5fb6a.d348e8",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "c85a452c.af0288",
+        "type": "ui_tab",
+        "name": "Setting",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "949bac93.8ca2",
+        "type": "ui_group",
+        "name": "Fish type",
+        "tab": "c85a452c.af0288",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "8ca6549a.4df1c8",
+        "type": "ui_group",
+        "name": "Additional information",
+        "tab": "c85a452c.af0288",
+        "order": 2,
         "disp": true,
         "width": "6",
         "collapse": false
@@ -269,7 +314,7 @@
         "type": "function",
         "z": "b040149.50cdce8",
         "name": "GetData",
-        "func": "var tmp1 = []\nvar tmp2 = []\nfor (var i = 0; i < msg.payload.length; i++)\n{\n    var t_obj = {};\n    t_obj[msg.payload[i][0]] = i\n    tmp1.push(t_obj)\n    tmp2.push(msg.payload[i])\n}\nflow.set(\"Fish\",tmp2);\nvar newMsg = {\n    options: tmp1\n}\nreturn newMsg;",
+        "func": "var tmp1 = []\nvar tmp2 = []\nfor (var i = 0; i < msg.payload.length; i++)\n{\n    var t_obj = {};\n    t_obj[msg.payload[i][0]] = i\n    tmp1.push(t_obj)\n    tmp2.push(msg.payload[i])\n}\nglobal.set(\"Fish\",tmp2);\nvar newMsg = {\n    options: tmp1\n}\nreturn newMsg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -297,7 +342,7 @@
                 "vt": "str"
             }
         ],
-        "repeat": "",
+        "repeat": "30",
         "crontab": "",
         "once": true,
         "onceDelay": 0.1,
@@ -337,7 +382,7 @@
         "type": "function",
         "z": "b040149.50cdce8",
         "name": "PrintData",
-        "func": "var fish = flow.get(\"Fish\")\nvar newMsg = {\n    payload: fish[msg.payload]\n}\nreturn newMsg;",
+        "func": "var fish = global.get(\"Fish\")\nvar newMsg = {\n    payload: fish[msg.payload]\n}\nreturn newMsg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -377,14 +422,14 @@
         "type": "mqtt in",
         "z": "df3448ae.3b3be8",
         "name": "",
-        "topic": "Condition",
+        "topic": "Web/condition",
         "qos": "2",
         "datatype": "auto",
         "broker": "6599e412.12713c",
         "nl": false,
         "rap": true,
         "rh": 0,
-        "x": 160,
+        "x": 90,
         "y": 280,
         "wires": [
             [
@@ -393,74 +438,12 @@
         ]
     },
     {
-        "id": "b7030c7.0af6ff",
-        "type": "mqtt out",
-        "z": "df3448ae.3b3be8",
-        "name": "",
-        "topic": "Condition",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "6599e412.12713c",
-        "x": 460,
-        "y": 160,
-        "wires": []
-    },
-    {
-        "id": "f52963ae.7ce2d",
-        "type": "inject",
-        "z": "df3448ae.3b3be8",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 170,
-        "y": 160,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "d3ac953.f3ebf68",
-        "type": "debug",
-        "z": "df3448ae.3b3be8",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 480,
-        "y": 380,
-        "wires": []
-    },
-    {
         "id": "7ac4529d.753f2c",
         "type": "ui_gauge",
         "z": "df3448ae.3b3be8",
         "name": "",
         "group": "76ac188b.7279c8",
-        "order": 0,
+        "order": 2,
         "width": "3",
         "height": "3",
         "gtype": "wave",
@@ -488,13 +471,14 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 320,
+        "x": 290,
         "y": 280,
         "wires": [
             [
                 "7ac4529d.753f2c",
-                "d3ac953.f3ebf68",
-                "438102a9.b3e02c"
+                "438102a9.b3e02c",
+                "957aaffd.978a1",
+                "e9d28e06.c2839"
             ]
         ]
     },
@@ -520,7 +504,7 @@
         ],
         "seg1": "",
         "seg2": "",
-        "x": 640,
+        "x": 710,
         "y": 340,
         "wires": []
     },
@@ -535,7 +519,7 @@
         "syntax": "mustache",
         "template": "{\n    \"options\":{\n        \"waveColor\":\"#994C00\"\n    }\n}",
         "output": "json",
-        "x": 500,
+        "x": 530,
         "y": 340,
         "wires": [
             [
@@ -702,9 +686,7 @@
         "x": 110,
         "y": 560,
         "wires": [
-            [
-                "16d1ca6b.6b5386"
-            ]
+            []
         ]
     },
     {
@@ -769,15 +751,312 @@
         ]
     },
     {
-        "id": "ce025712.b05018",
-        "type": "ui_ui_control",
-        "z": "b040149.50cdce8",
+        "id": "957aaffd.978a1",
+        "type": "ui_gauge",
+        "z": "df3448ae.3b3be8",
         "name": "",
-        "events": "all",
-        "x": 810,
-        "y": 440,
+        "group": "76ac188b.7279c8",
+        "order": 3,
+        "width": "3",
+        "height": "3",
+        "gtype": "gage",
+        "title": "pH",
+        "label": "",
+        "format": "{{payload.ph}}",
+        "min": 0,
+        "max": "14",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 490,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "404733e9.5c254c",
+        "type": "ui_gauge",
+        "z": "df3448ae.3b3be8",
+        "name": "",
+        "group": "76ac188b.7279c8",
+        "order": 4,
+        "width": "3",
+        "height": "3",
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "°C",
+        "format": "{{payload.temp}}",
+        "min": "15",
+        "max": "35",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 470,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "e9d28e06.c2839",
+        "type": "function",
+        "z": "df3448ae.3b3be8",
+        "name": "temperature",
+        "func": "var tmp = global.get(\"Fish\")\nvar str = tmp[parseInt(global.get(\"Chosen\"))][1]\nvar arr = str.split(\"-\")\nvar newMsg = {\n    ui_control: {\n        max: parseInt(arr[1]),\n        min: parseInt(arr[0])\n    },\n    payload: msg.payload.temp\n}\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 230,
+        "y": 420,
+        "wires": [
+            [
+                "404733e9.5c254c",
+                "55f5ce5b.cb69a"
+            ]
+        ]
+    },
+    {
+        "id": "55f5ce5b.cb69a",
+        "type": "debug",
+        "z": "df3448ae.3b3be8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 250,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "6052d29f.d7c6dc",
+        "type": "function",
+        "z": "8980df89.7c554",
+        "name": "DisplayData",
+        "func": "var tmp = global.get(\"Fish\")\nvar arr = []\nfor (var i = 0; i < tmp.length; i++)\n{\n    var t_obj = {};\n    t_obj[tmp[i][0]] = i\n    arr.push(t_obj)\n}\n\nreturn {options:arr};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 140,
+        "wires": [
+            [
+                "d1d5b690.29dcf8"
+            ]
+        ]
+    },
+    {
+        "id": "d1d5b690.29dcf8",
+        "type": "ui_dropdown",
+        "z": "8980df89.7c554",
+        "name": "",
+        "label": "",
+        "tooltip": "",
+        "place": "Select fish",
+        "group": "949bac93.8ca2",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "",
+                "value": "",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 480,
+        "y": 140,
+        "wires": [
+            [
+                "b53b37d5.905658",
+                "5da7c83d.e62bc8"
+            ]
+        ]
+    },
+    {
+        "id": "8e4c6680.0868c8",
+        "type": "inject",
+        "z": "8980df89.7c554",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 140,
+        "wires": [
+            [
+                "6052d29f.d7c6dc"
+            ]
+        ]
+    },
+    {
+        "id": "b53b37d5.905658",
+        "type": "function",
+        "z": "8980df89.7c554",
+        "name": "Dropdown choice",
+        "func": "global.set(\"Chosen\", msg.payload)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 140,
         "wires": [
             []
         ]
+    },
+    {
+        "id": "f63d379a.9eba08",
+        "type": "mqtt out",
+        "z": "8980df89.7c554",
+        "name": "",
+        "topic": "Web/condition",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "6599e412.12713c",
+        "x": 800,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "5da7c83d.e62bc8",
+        "type": "template",
+        "z": "8980df89.7c554",
+        "name": "signal",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\n    method: \"GET\"\n}",
+        "output": "str",
+        "x": 650,
+        "y": 200,
+        "wires": [
+            [
+                "f63d379a.9eba08"
+            ]
+        ]
+    },
+    {
+        "id": "c041f01c.cd025",
+        "type": "ui_form",
+        "z": "8980df89.7c554",
+        "name": "",
+        "label": "",
+        "group": "8ca6549a.4df1c8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Max pH",
+                "value": "max_ph",
+                "type": "number",
+                "required": false,
+                "rows": null
+            },
+            {
+                "label": "Min pH",
+                "value": "min_ph",
+                "type": "number",
+                "required": false,
+                "rows": null
+            },
+            {
+                "label": "Max Temperature",
+                "value": "max_temp",
+                "type": "number",
+                "required": false,
+                "rows": null
+            },
+            {
+                "label": "Min Temperature",
+                "value": "min_temp",
+                "type": "number",
+                "required": false,
+                "rows": null
+            },
+            {
+                "label": "email",
+                "value": "email",
+                "type": "text",
+                "required": false,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "max_ph": "",
+            "min_ph": "",
+            "max_temp": "",
+            "min_temp": "",
+            "email": ""
+        },
+        "payload": "",
+        "submit": "Submit",
+        "cancel": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "x": 130,
+        "y": 300,
+        "wires": [
+            [
+                "713e5a8b.5dfad4"
+            ]
+        ]
+    },
+    {
+        "id": "713e5a8b.5dfad4",
+        "type": "debug",
+        "z": "8980df89.7c554",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 330,
+        "y": 400,
+        "wires": []
     }
 ]
