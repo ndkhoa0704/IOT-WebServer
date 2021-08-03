@@ -4,7 +4,8 @@
     "version": "0.0.1",
     "dependencies": {
         "node-red-contrib-google-sheets": "1.0.0",
-        "node-red-dashboard": "2.30.0"
+        "node-red-dashboard": "2.30.0",
+        "node-red-contrib-users": "0.1.10"
     },
     "node-red": {
         "settings": {
