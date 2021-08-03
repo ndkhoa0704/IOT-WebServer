@@ -2,7 +2,11 @@
     "name": "Web-Server0-19clc7-Team7",
     "description": "A Node-RED Project",
     "version": "0.0.1",
-    "dependencies": {},
+    "dependencies": {
+        "node-red-contrib-google-sheets": "1.0.0",
+        "node-red-contrib-users": "0.1.10",
+        "node-red-dashboard": "2.30.0"
+    },
     "node-red": {
         "settings": {
             "flowFile": "flows_Koa-Laptop.json",
