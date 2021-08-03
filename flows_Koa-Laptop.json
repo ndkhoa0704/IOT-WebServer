@@ -460,8 +460,8 @@
         ],
         "seg1": "",
         "seg2": "",
-        "x": 620,
-        "y": 160,
+        "x": 490,
+        "y": 340,
         "wires": []
     },
     {
@@ -472,14 +472,19 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 460,
-        "y": 160,
+        "x": 320,
+        "y": 280,
         "wires": [
             [
                 "7ac4529d.753f2c",
+                "d3ac953.f3ebf68",
                 "438102a9.b3e02c",
                 "fdafa21b.a1a62",
-                "5cfd9947.228c98"
+                "5cfd9947.228c98",
+                "57c593a0.2ed66c",
+                "9edb3015.c8637",
+                "cf55ff0f.0602e",
+                "c80ce104.916eb"
             ]
         ]
     },
@@ -505,8 +510,8 @@
         ],
         "seg1": "",
         "seg2": "",
-        "x": 850,
-        "y": 220,
+        "x": 650,
+        "y": 280,
         "wires": []
     },
     {
@@ -520,8 +525,8 @@
         "syntax": "mustache",
         "template": "{\n    \"options\":{\n        \"waveColor\":\"#994C00\"\n    }\n}",
         "output": "json",
-        "x": 670,
-        "y": 220,
+        "x": 510,
+        "y": 280,
         "wires": [
             [
                 "7bf5c94b.e16a68"
@@ -1031,8 +1036,8 @@
         ],
         "seg1": "",
         "seg2": "",
-        "x": 630,
-        "y": 280,
+        "x": 510,
+        "y": 380,
         "wires": []
     },
     {
@@ -1057,8 +1062,8 @@
         ],
         "seg1": "",
         "seg2": "",
-        "x": 630,
-        "y": 400,
+        "x": 490,
+        "y": 420,
         "wires": []
     },
     {
@@ -1357,5 +1362,81 @@
         "x": 670,
         "y": 500,
         "wires": []
+    },
+    {
+        "id": "57c593a0.2ed66c",
+        "type": "http request",
+        "z": "df3448ae.3b3be8",
+        "name": "Cloud- save water",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.thingspeak.com/update?api_key=UEA1UQZY2F37NNSQ&field1={{{payload.water}}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 530,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9edb3015.c8637",
+        "type": "http request",
+        "z": "df3448ae.3b3be8",
+        "name": "Cloud- save food",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.thingspeak.com/update?api_key=UEA1UQZY2F37NNSQ&field2={{{payload.food}}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 530,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cf55ff0f.0602e",
+        "type": "http request",
+        "z": "df3448ae.3b3be8",
+        "name": "Cloud- save temperature",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.thingspeak.com/update?api_key=UEA1UQZY2F37NNSQ&field3={{{payload.temp}}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 550,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c80ce104.916eb",
+        "type": "http request",
+        "z": "df3448ae.3b3be8",
+        "name": "Cloud- save pH",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.thingspeak.com/update?api_key=UEA1UQZY2F37NNSQ&field4={{{payload.ph}}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 520,
+        "y": 180,
+        "wires": [
+            []
+        ]
     }
 ]
