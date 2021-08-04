@@ -222,16 +222,6 @@
         "collapse": false
     },
     {
-        "id": "67f2a89e.fa4998",
-        "type": "ui_group",
-        "name": "Setup",
-        "tab": "eac5fb6a.d348e8",
-        "order": 2,
-        "disp": true,
-        "width": "6",
-        "collapse": false
-    },
-    {
         "id": "c85a452c.af0288",
         "type": "ui_tab",
         "name": "Setting",
@@ -255,6 +245,16 @@
         "name": "Additional information",
         "tab": "c85a452c.af0288",
         "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "15b99e9f.1bd151",
+        "type": "ui_group",
+        "name": "Change username and password",
+        "tab": "c85a452c.af0288",
+        "order": 3,
         "disp": true,
         "width": "6",
         "collapse": false
@@ -611,7 +611,7 @@
         "type": "function",
         "z": "27157737.c8f3b8",
         "name": "Check login",
-        "func": "msg.login = false;\nif (msg.payload.username == \"admin\" && msg.payload.password==\"admin\"){\n    msg.login= true;\n}\nreturn msg;",
+        "func": "msg.login = false;\nif (msg.payload.username == global.get(\"account\").uname && msg.payload.password==global.get(\"account\").pwd){\n    msg.login= true;\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -849,7 +849,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 670,
+        "x": 610,
         "y": 140,
         "wires": [
             [
@@ -913,11 +913,11 @@
         },
         "payload": "",
         "submit": "Submit",
-        "cancel": "",
+        "cancel": "Cancel",
         "topic": "topic",
         "topicType": "msg",
         "splitLayout": "",
-        "x": 130,
+        "x": 110,
         "y": 300,
         "wires": [
             [
@@ -991,7 +991,7 @@
         "raw": false,
         "topic": "",
         "name": "",
-        "x": 840,
+        "x": 760,
         "y": 300,
         "wires": []
     },
@@ -1000,13 +1000,13 @@
         "type": "function",
         "z": "8980df89.7c554",
         "name": "Verify",
-        "func": "global.set(\"setting\", msg.payload)\nvar err = {\n    payload: 0\n}\n\nif (msg.payload.max_ph != null && msg.payload.min_ph != null && msg.payload.max_temp != null && msg.payload.min_temp != null)\n{\n    if (msg.payload.max_ph < msg.payload.min_ph || msg.payload.max_temp < msg.payload.min_temp)\n        return err\n    return {payload:1}\n}\nelse if (msg.payload.max_ph == null && msg.payload.min_ph == null && msg.payload.max_temp == null && msg.payload.min_temp == null && msg.payload.email != null)\n    return {payload:1}\nelse return err",
+        "func": "global.set(\"setting\", msg.payload)\nvar err = {\n    payload: 0\n}\n\nif (msg.payload.max_ph != null && msg.payload.min_ph != null && msg.payload.max_temp != null && msg.payload.min_temp != null)\n{\n    if (msg.payload.max_ph < msg.payload.min_ph || msg.payload.max_temp < msg.payload.min_temp)\n        return err\n    return {payload:1}\n}\nelse return err",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 290,
+        "x": 250,
         "y": 300,
         "wires": [
             [
@@ -1036,7 +1036,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 430,
+        "x": 450,
         "y": 300,
         "wires": [
             [
@@ -1227,7 +1227,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 250,
+        "x": 230,
         "y": 400,
         "wires": [
             [
@@ -1254,7 +1254,8 @@
                 "1bcd5550.6a8c1b",
                 "2bc13888.a5cad8",
                 "73e49fcd.1bd27",
-                "71978a8e.5ba5c4"
+                "71978a8e.5ba5c4",
+                "d5a40cb3.2ab3"
             ]
         ]
     },
@@ -1449,6 +1450,413 @@
         "statusType": "auto",
         "x": 710,
         "y": 540,
+        "wires": []
+    },
+    {
+        "id": "30db5393.73942c",
+        "type": "ui_form",
+        "z": "8980df89.7c554",
+        "name": "",
+        "label": "",
+        "group": "15b99e9f.1bd151",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "username",
+                "value": "uname",
+                "type": "text",
+                "required": false,
+                "rows": null
+            },
+            {
+                "label": "old password",
+                "value": "opwd",
+                "type": "password",
+                "required": false,
+                "rows": null
+            },
+            {
+                "label": "new password",
+                "value": "npwd",
+                "type": "password",
+                "required": false,
+                "rows": null
+            },
+            {
+                "label": "confirm new password",
+                "value": "cnpwd",
+                "type": "password",
+                "required": false,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "uname": "",
+            "opwd": "",
+            "npwd": "",
+            "cnpwd": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "x": 90,
+        "y": 560,
+        "wires": [
+            [
+                "2a48cc91.880ac4"
+            ]
+        ]
+    },
+    {
+        "id": "2a48cc91.880ac4",
+        "type": "function",
+        "z": "8980df89.7c554",
+        "name": "Confirm",
+        "func": "var erpwd = {\n    payload: 1\n}\nvar erform = {\n    payload:-1\n}\nvar ok = {\n    payload:0\n}\nvar eropwd = {\n    payload: 2\n}\nif (msg.payload.uname != \"\" && msg.payload.opwd != \"\" && msg.payload.cnpwd != \"\" && msg.payload.npwd != \"\" )\n{\n    if (msg.payload.npwd != msg.payload.cnpwd)\n        return erpwd\n    if (msg.payload.opwd != global.get(\"account\").pwd)\n        return eropwd\n    global.set(\"account\",{uname: msg.payload.uname, pwd: msg.payload.npwd})\n    return ok\n}\nreturn erform",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 220,
+        "y": 560,
+        "wires": [
+            [
+                "6f81d1c.379643"
+            ]
+        ]
+    },
+    {
+        "id": "26ca98d.2963968",
+        "type": "change",
+        "z": "8980df89.7c554",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "account",
+                "pt": "global",
+                "to": "{\"uname\":\"admin\",\"pwd\":\"admin\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8bcb447e.96d478",
+        "type": "inject",
+        "z": "8980df89.7c554",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 100,
+        "wires": [
+            [
+                "26ca98d.2963968"
+            ]
+        ]
+    },
+    {
+        "id": "6f81d1c.379643",
+        "type": "switch",
+        "z": "8980df89.7c554",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "-1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 350,
+        "y": 560,
+        "wires": [
+            [
+                "6a6be36a.c733cc"
+            ],
+            [
+                "b6e764b6.152c08"
+            ],
+            [
+                "9ed62659.f7b958"
+            ],
+            [
+                "3bd8f7ab.ee6af8"
+            ]
+        ]
+    },
+    {
+        "id": "b7b65d6e.53a38",
+        "type": "ui_toast",
+        "z": "8980df89.7c554",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "topic": "",
+        "name": "",
+        "x": 480,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "d5a40cb3.2ab3",
+        "type": "change",
+        "z": "8980df89.7c554",
+        "name": "Set",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "\"Setting updated\"",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 330,
+        "y": 480,
+        "wires": [
+            [
+                "b7b65d6e.53a38"
+            ]
+        ]
+    },
+    {
+        "id": "e9079e07.fde1c",
+        "type": "ui_toast",
+        "z": "8980df89.7c554",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "topic": "",
+        "name": "",
+        "x": 700,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "a27c22b3.05b65",
+        "type": "ui_toast",
+        "z": "8980df89.7c554",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "topic": "",
+        "name": "",
+        "x": 700,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "609ff8e9.509008",
+        "type": "ui_toast",
+        "z": "8980df89.7c554",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "topic": "",
+        "name": "",
+        "x": 700,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "b6e764b6.152c08",
+        "type": "change",
+        "z": "8980df89.7c554",
+        "name": "Password",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Confirmed password does not match new password",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 600,
+        "wires": [
+            [
+                "a27c22b3.05b65"
+            ]
+        ]
+    },
+    {
+        "id": "9ed62659.f7b958",
+        "type": "change",
+        "z": "8980df89.7c554",
+        "name": "Incomplete",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Invalid information",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 530,
+        "y": 640,
+        "wires": [
+            [
+                "e9079e07.fde1c"
+            ]
+        ]
+    },
+    {
+        "id": "6a6be36a.c733cc",
+        "type": "change",
+        "z": "8980df89.7c554",
+        "name": "Changed",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Account's changed",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 560,
+        "wires": [
+            [
+                "609ff8e9.509008"
+            ]
+        ]
+    },
+    {
+        "id": "3bd8f7ab.ee6af8",
+        "type": "change",
+        "z": "8980df89.7c554",
+        "name": "Old password",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Wrong old password",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 680,
+        "wires": [
+            [
+                "406d34cf.aa36ac"
+            ]
+        ]
+    },
+    {
+        "id": "406d34cf.aa36ac",
+        "type": "ui_toast",
+        "z": "8980df89.7c554",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "topic": "",
+        "name": "",
+        "x": 700,
+        "y": 680,
         "wires": []
     }
 ]
