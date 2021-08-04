@@ -28,6 +28,13 @@
         "info": ""
     },
     {
+        "id": "a843fa9.aa22108",
+        "type": "tab",
+        "label": "Control",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "96d6fda7.7e85a",
         "type": "gauth"
     },
@@ -236,6 +243,7 @@
         "type": "ui_tab",
         "name": "Setting",
         "icon": "dashboard",
+        "order": 5,
         "disabled": false,
         "hidden": false
     },
@@ -255,6 +263,25 @@
         "name": "Additional information",
         "tab": "c85a452c.af0288",
         "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "a80ae9c9.b0b6d8",
+        "type": "ui_tab",
+        "name": "Control",
+        "icon": "dashboard",
+        "order": 4,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "96f5631c.f024f",
+        "type": "ui_group",
+        "name": "Control",
+        "tab": "a80ae9c9.b0b6d8",
+        "order": 1,
         "disp": true,
         "width": "6",
         "collapse": false
@@ -444,7 +471,7 @@
         "z": "df3448ae.3b3be8",
         "name": "",
         "group": "76ac188b.7279c8",
-        "order": 2,
+        "order": 3,
         "width": "3",
         "height": "3",
         "gtype": "wave",
@@ -494,7 +521,7 @@
         "z": "df3448ae.3b3be8",
         "name": "",
         "group": "76ac188b.7279c8",
-        "order": 1,
+        "order": 4,
         "width": "3",
         "height": "3",
         "gtype": "wave",
@@ -931,7 +958,7 @@
         "z": "df3448ae.3b3be8",
         "name": "",
         "group": "76ac188b.7279c8",
-        "order": 3,
+        "order": 5,
         "width": "3",
         "height": "3",
         "gtype": "gage",
@@ -957,7 +984,7 @@
         "z": "df3448ae.3b3be8",
         "name": "",
         "group": "76ac188b.7279c8",
-        "order": 4,
+        "order": 6,
         "width": "3",
         "height": "3",
         "gtype": "gage",
@@ -1449,6 +1476,228 @@
         "statusType": "auto",
         "x": 710,
         "y": 540,
+        "wires": []
+    },
+    {
+        "id": "c2b5c003.da7b6",
+        "type": "mqtt out",
+        "z": "a843fa9.aa22108",
+        "name": "",
+        "topic": "Web/control/light",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "6599e412.12713c",
+        "x": 390,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "cadbe35b.1a49a",
+        "type": "ui_switch",
+        "z": "a843fa9.aa22108",
+        "name": "",
+        "label": "LED",
+        "tooltip": "",
+        "group": "96f5631c.f024f",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "x": 90,
+        "y": 120,
+        "wires": [
+            [
+                "c2b5c003.da7b6",
+                "3c115b28.51fe14"
+            ]
+        ]
+    },
+    {
+        "id": "3c115b28.51fe14",
+        "type": "debug",
+        "z": "a843fa9.aa22108",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 350,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "8903b65d.0555e8",
+        "type": "ui_led",
+        "z": "df3448ae.3b3be8",
+        "order": 1,
+        "group": "76ac188b.7279c8",
+        "width": 0,
+        "height": 0,
+        "label": "LED Status ",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "false",
+                "valueType": "str"
+            },
+            {
+                "color": "#008000",
+                "value": "true",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 410,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "6e72759f.f4cb9c",
+        "type": "mqtt in",
+        "z": "df3448ae.3b3be8",
+        "name": "",
+        "topic": "Web/control/light",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "6599e412.12713c",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 230,
+        "y": 580,
+        "wires": [
+            [
+                "8903b65d.0555e8"
+            ]
+        ]
+    },
+    {
+        "id": "dded990a.a90c58",
+        "type": "mqtt out",
+        "z": "a843fa9.aa22108",
+        "name": "",
+        "topic": "Web/control/fan",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "6599e412.12713c",
+        "x": 380,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "99821499.7d6388",
+        "type": "ui_switch",
+        "z": "a843fa9.aa22108",
+        "name": "",
+        "label": "Fan",
+        "tooltip": "",
+        "group": "96f5631c.f024f",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "x": 90,
+        "y": 200,
+        "wires": [
+            [
+                "dded990a.a90c58"
+            ]
+        ]
+    },
+    {
+        "id": "fdab942d.ab5c98",
+        "type": "mqtt in",
+        "z": "df3448ae.3b3be8",
+        "name": "",
+        "topic": "Web/control/fan",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "6599e412.12713c",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 230,
+        "y": 640,
+        "wires": [
+            [
+                "86d846a7.d10c68"
+            ]
+        ]
+    },
+    {
+        "id": "86d846a7.d10c68",
+        "type": "ui_led",
+        "z": "df3448ae.3b3be8",
+        "order": 2,
+        "group": "76ac188b.7279c8",
+        "width": 0,
+        "height": 0,
+        "label": "Fan ",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "false",
+                "valueType": "str"
+            },
+            {
+                "color": "#008000",
+                "value": "true",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "Fan",
+        "x": 400,
+        "y": 640,
         "wires": []
     }
 ]
