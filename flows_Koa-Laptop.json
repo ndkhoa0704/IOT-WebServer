@@ -461,7 +461,8 @@
         "y": 160,
         "wires": [
             [
-                "b2bf3a48.38e5b8"
+                "b2bf3a48.38e5b8",
+                "10727d2.6bf8a83"
             ]
         ]
     },
@@ -537,7 +538,7 @@
         ],
         "seg1": "",
         "seg2": "",
-        "x": 650,
+        "x": 670,
         "y": 280,
         "wires": []
     },
@@ -2107,5 +2108,102 @@
         "x": 430,
         "y": 580,
         "wires": []
+    },
+    {
+        "id": "10727d2.6bf8a83",
+        "type": "countdown",
+        "z": "df3448ae.3b3be8",
+        "name": "",
+        "topic": "",
+        "payloadTimerStart": "true",
+        "payloadTimerStartType": "bool",
+        "payloadTimerStop": "false",
+        "payloadTimerStopType": "bool",
+        "timer": 30,
+        "resetWhileRunning": true,
+        "setTimeToNewWhileRunning": false,
+        "startCountdownOnControlMessage": false,
+        "x": 510,
+        "y": 220,
+        "wires": [
+            [
+                "6d1f7e6a.b3d5d"
+            ],
+            [
+                "226cba71.c41056"
+            ]
+        ]
+    },
+    {
+        "id": "e96abb85.bd51f8",
+        "type": "mqtt out",
+        "z": "df3448ae.3b3be8",
+        "name": "",
+        "topic": "Web/condition",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "6599e412.12713c",
+        "x": 880,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "226cba71.c41056",
+        "type": "change",
+        "z": "df3448ae.3b3be8",
+        "name": "System collapsed",
+        "rules": [
+            {
+                "t": "set",
+                "p": "mail",
+                "pt": "flow",
+                "to": "SYSTEM IS NOT WORKING",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 710,
+        "y": 380,
+        "wires": [
+            [
+                "9362ca6d.da1b38"
+            ]
+        ]
+    },
+    {
+        "id": "6d1f7e6a.b3d5d",
+        "type": "change",
+        "z": "df3448ae.3b3be8",
+        "name": "Get condition",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"method\": \"GET\", \"info\": \"condition\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 710,
+        "y": 180,
+        "wires": [
+            [
+                "e96abb85.bd51f8"
+            ]
+        ]
     }
 ]
