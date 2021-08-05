@@ -287,165 +287,6 @@
         "collapse": false
     },
     {
-        "id": "635a98dd.379758",
-        "type": "GSheet",
-        "z": "b040149.50cdce8",
-        "creds": "96d6fda7.7e85a",
-        "method": "get",
-        "action": "",
-        "sheet": "1-RCkou1-fFh03lOdM4pBDjvVid5J3f6aVKq9PC3tQeE",
-        "cells": "Sheet1!A2:F6",
-        "flatten": false,
-        "name": "",
-        "x": 910,
-        "y": 100,
-        "wires": [
-            [
-                "6a79dea.68a202"
-            ]
-        ]
-    },
-    {
-        "id": "914ad8cd.3f4588",
-        "type": "ui_dropdown",
-        "z": "b040149.50cdce8",
-        "name": "",
-        "label": "",
-        "tooltip": "",
-        "place": "Select fish",
-        "group": "80cc5dbc.88601",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "multiple": false,
-        "options": [
-            {
-                "label": "",
-                "value": "",
-                "type": "str"
-            }
-        ],
-        "payload": "",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 1280,
-        "y": 100,
-        "wires": [
-            [
-                "512445d8.40756c"
-            ]
-        ]
-    },
-    {
-        "id": "6a79dea.68a202",
-        "type": "function",
-        "z": "b040149.50cdce8",
-        "name": "GetData",
-        "func": "var tmp1 = []\nvar tmp2 = []\nfor (var i = 0; i < msg.payload.length; i++)\n{\n    var t_obj = {};\n    t_obj[msg.payload[i][0]] = i\n    tmp1.push(t_obj)\n    tmp2.push(msg.payload[i])\n}\nglobal.set(\"Fish\",tmp2);\nvar newMsg = {\n    options: tmp1\n}\nreturn newMsg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1100,
-        "y": 100,
-        "wires": [
-            [
-                "914ad8cd.3f4588"
-            ]
-        ]
-    },
-    {
-        "id": "a1a52f.98b64ad",
-        "type": "inject",
-        "z": "b040149.50cdce8",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "5",
-        "crontab": "",
-        "once": true,
-        "onceDelay": "1",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 720,
-        "y": 100,
-        "wires": [
-            [
-                "635a98dd.379758"
-            ]
-        ]
-    },
-    {
-        "id": "ba4d7178.dc48",
-        "type": "ui_template",
-        "z": "b040149.50cdce8",
-        "group": "f8439ecd.7a9c1",
-        "name": "",
-        "order": 2,
-        "width": "10",
-        "height": "10",
-        "format": "<h2>\n    Info:\n</h2>\n<div>\n    <h4 style=\"display: inline;\">Temperature: </h4>\n    <h4 style=\"display: inline;\">{{msg.payload[1]}}</h4>\n    <h4 style=\"display: inline;\"> °C</h4>\n</div>\n<div>\n    <h4 style=\"display: inline;\">pH: </h4>\n    <h4 style=\"display: inline;\">{{msg.payload[2]}}</h4>\n</div>\n<div>\n    <h4 style=\"display: inline;\">Water change: </h4>\n    <h4 style=\"display: inline;\">{{msg.payload[3]}}</h4>\n    <h4 style=\"display: inline;\"> %</h4>\n</div>\n<br>\n<div> {{msg.payload[5]}}</div>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "x": 1140,
-        "y": 240,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "512445d8.40756c",
-        "type": "function",
-        "z": "b040149.50cdce8",
-        "name": "PrintData",
-        "func": "var fish = global.get(\"Fish\")\nvar newMsg = {\n    payload: fish[msg.payload]\n}\nreturn newMsg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 840,
-        "y": 240,
-        "wires": [
-            [
-                "ba4d7178.dc48",
-                "73f1d52.3ac792c"
-            ]
-        ]
-    },
-    {
-        "id": "73f1d52.3ac792c",
-        "type": "ui_template",
-        "z": "b040149.50cdce8",
-        "group": "80cc5dbc.88601",
-        "name": "",
-        "order": 0,
-        "width": "10",
-        "height": "9",
-        "format": "<img src={{msg.payload[4]}}>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "x": 1140,
-        "y": 320,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "72c943f7.b0a46c",
         "type": "mqtt in",
         "z": "df3448ae.3b3be8",
@@ -1407,11 +1248,6 @@
         "propertyType": "msg",
         "rules": [
             {
-                "t": "eq",
-                "v": "",
-                "vt": "str"
-            },
-            {
                 "t": "neq",
                 "v": "",
                 "vt": "str"
@@ -1419,11 +1255,10 @@
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 2,
-        "x": 500,
+        "outputs": 1,
+        "x": 470,
         "y": 480,
         "wires": [
-            [],
             [
                 "9362ca6d.da1b38"
             ]
@@ -1439,7 +1274,7 @@
         "tls": true,
         "name": "",
         "dname": "",
-        "x": 850,
+        "x": 930,
         "y": 480,
         "wires": []
     },
@@ -1454,31 +1289,13 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 680,
+        "x": 660,
         "y": 480,
         "wires": [
             [
-                "1eddb34c.7d7d1d",
-                "cba1a37c.9f2cb"
+                "1c8ac217.4a4b6e"
             ]
         ]
-    },
-    {
-        "id": "cba1a37c.9f2cb",
-        "type": "debug",
-        "z": "df3448ae.3b3be8",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 710,
-        "y": 540,
-        "wires": []
     },
     {
         "id": "30db5393.73942c",
@@ -2203,6 +2020,190 @@
         "wires": [
             [
                 "e96abb85.bd51f8"
+            ]
+        ]
+    },
+    {
+        "id": "635a98dd.379758",
+        "type": "GSheet",
+        "z": "b040149.50cdce8",
+        "creds": "96d6fda7.7e85a",
+        "method": "get",
+        "action": "",
+        "sheet": "1-RCkou1-fFh03lOdM4pBDjvVid5J3f6aVKq9PC3tQeE",
+        "cells": "Sheet1!A2:F6",
+        "flatten": false,
+        "name": "",
+        "x": 350,
+        "y": 160,
+        "wires": [
+            [
+                "6a79dea.68a202"
+            ]
+        ]
+    },
+    {
+        "id": "914ad8cd.3f4588",
+        "type": "ui_dropdown",
+        "z": "b040149.50cdce8",
+        "name": "",
+        "label": "",
+        "tooltip": "",
+        "place": "Select fish",
+        "group": "80cc5dbc.88601",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "multiple": false,
+        "options": [
+            {
+                "label": "",
+                "value": "",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 720,
+        "y": 160,
+        "wires": [
+            [
+                "512445d8.40756c"
+            ]
+        ]
+    },
+    {
+        "id": "6a79dea.68a202",
+        "type": "function",
+        "z": "b040149.50cdce8",
+        "name": "GetData",
+        "func": "var tmp1 = []\nvar tmp2 = []\nfor (var i = 0; i < msg.payload.length; i++)\n{\n    var t_obj = {};\n    t_obj[msg.payload[i][0]] = i\n    tmp1.push(t_obj)\n    tmp2.push(msg.payload[i])\n}\nglobal.set(\"Fish\",tmp2);\nvar newMsg = {\n    options: tmp1\n}\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 160,
+        "wires": [
+            [
+                "914ad8cd.3f4588"
+            ]
+        ]
+    },
+    {
+        "id": "a1a52f.98b64ad",
+        "type": "inject",
+        "z": "b040149.50cdce8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 160,
+        "wires": [
+            [
+                "635a98dd.379758"
+            ]
+        ]
+    },
+    {
+        "id": "ba4d7178.dc48",
+        "type": "ui_template",
+        "z": "b040149.50cdce8",
+        "group": "f8439ecd.7a9c1",
+        "name": "",
+        "order": 2,
+        "width": "10",
+        "height": "10",
+        "format": "<h2>\n    Info:\n</h2>\n<div>\n    <h4 style=\"display: inline;\">Temperature: </h4>\n    <h4 style=\"display: inline;\">{{msg.payload[1]}}</h4>\n    <h4 style=\"display: inline;\"> °C</h4>\n</div>\n<div>\n    <h4 style=\"display: inline;\">pH: </h4>\n    <h4 style=\"display: inline;\">{{msg.payload[2]}}</h4>\n</div>\n<div>\n    <h4 style=\"display: inline;\">Water change: </h4>\n    <h4 style=\"display: inline;\">{{msg.payload[3]}}</h4>\n    <h4 style=\"display: inline;\"> %</h4>\n</div>\n<br>\n<div> {{msg.payload[5]}}</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 580,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "512445d8.40756c",
+        "type": "function",
+        "z": "b040149.50cdce8",
+        "name": "PrintData",
+        "func": "var fish = global.get(\"Fish\")\nvar newMsg = {\n    payload: fish[msg.payload]\n}\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 300,
+        "wires": [
+            [
+                "ba4d7178.dc48",
+                "73f1d52.3ac792c"
+            ]
+        ]
+    },
+    {
+        "id": "73f1d52.3ac792c",
+        "type": "ui_template",
+        "z": "b040149.50cdce8",
+        "group": "80cc5dbc.88601",
+        "name": "",
+        "order": 0,
+        "width": "10",
+        "height": "9",
+        "format": "<img src={{msg.payload[4]}}>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 580,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1c8ac217.4a4b6e",
+        "type": "switch",
+        "z": "df3448ae.3b3be8",
+        "name": "To",
+        "property": "to",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 810,
+        "y": 480,
+        "wires": [
+            [
+                "1eddb34c.7d7d1d"
             ]
         ]
     }
