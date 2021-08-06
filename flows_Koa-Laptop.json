@@ -28,13 +28,6 @@
         "info": ""
     },
     {
-        "id": "a843fa9.aa22108",
-        "type": "tab",
-        "label": "Control",
-        "disabled": false,
-        "info": ""
-    },
-    {
         "id": "96d6fda7.7e85a",
         "type": "gauth"
     },
@@ -254,7 +247,7 @@
         "type": "ui_group",
         "name": "Information",
         "tab": "c85a452c.af0288",
-        "order": 3,
+        "order": 4,
         "disp": true,
         "width": "6",
         "collapse": false
@@ -262,9 +255,9 @@
     {
         "id": "15b99e9f.1bd151",
         "type": "ui_group",
-        "name": "Change username and password",
+        "name": "Account setting",
         "tab": "c85a452c.af0288",
-        "order": 4,
+        "order": 3,
         "disp": true,
         "width": "6",
         "collapse": false
@@ -304,6 +297,16 @@
         "name": "Control",
         "tab": "c85a452c.af0288",
         "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "6cceee71.9d0ba",
+        "type": "ui_group",
+        "name": "Status",
+        "tab": "eac5fb6a.d348e8",
+        "order": 2,
         "disp": true,
         "width": "6",
         "collapse": false
@@ -431,7 +434,7 @@
         "name": "Login transition",
         "events": "all",
         "x": 780,
-        "y": 420,
+        "y": 360,
         "wires": [
             []
         ]
@@ -481,23 +484,6 @@
         ]
     },
     {
-        "id": "68f4d953.8f6108",
-        "type": "debug",
-        "z": "27157737.c8f3b8",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 470,
-        "y": 360,
-        "wires": []
-    },
-    {
         "id": "4f1b2796.f8e7c8",
         "type": "function",
         "z": "27157737.c8f3b8",
@@ -512,7 +498,6 @@
         "y": 360,
         "wires": [
             [
-                "68f4d953.8f6108",
                 "a2185ffa.923dd"
             ]
         ]
@@ -533,7 +518,7 @@
         "repair": false,
         "outputs": 1,
         "x": 470,
-        "y": 420,
+        "y": 360,
         "wires": [
             [
                 "3aa46610.d9507a"
@@ -552,7 +537,7 @@
         "finalize": "",
         "libs": [],
         "x": 620,
-        "y": 420,
+        "y": 360,
         "wires": [
             [
                 "ca32e01.f51222"
@@ -580,8 +565,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 110,
-        "y": 560,
+        "x": 150,
+        "y": 420,
         "wires": [
             [
                 "16d1ca6b.6b5386"
@@ -600,11 +585,10 @@
         "finalize": "",
         "libs": [],
         "x": 320,
-        "y": 560,
+        "y": 420,
         "wires": [
             [
-                "99f2b8e8.2be438",
-                "e2e5a0cb.e4429"
+                "99f2b8e8.2be438"
             ]
         ]
     },
@@ -614,27 +598,11 @@
         "z": "27157737.c8f3b8",
         "name": "Login session",
         "events": "all",
-        "x": 510,
-        "y": 560,
+        "x": 500,
+        "y": 420,
         "wires": [
             []
         ]
-    },
-    {
-        "id": "e2e5a0cb.e4429",
-        "type": "debug",
-        "z": "27157737.c8f3b8",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 510,
-        "y": 600,
-        "wires": []
     },
     {
         "id": "6052d29f.d7c6dc",
@@ -647,8 +615,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 290,
-        "y": 140,
+        "x": 270,
+        "y": 200,
         "wires": [
             [
                 "d1d5b690.29dcf8"
@@ -679,8 +647,8 @@
         "payload": "",
         "topic": "topic",
         "topicType": "msg",
-        "x": 460,
-        "y": 140,
+        "x": 440,
+        "y": 200,
         "wires": [
             [
                 "b53b37d5.905658"
@@ -708,8 +676,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 130,
-        "y": 140,
+        "x": 110,
+        "y": 200,
         "wires": [
             [
                 "6052d29f.d7c6dc"
@@ -727,8 +695,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 670,
-        "y": 140,
+        "x": 250,
+        "y": 260,
         "wires": [
             [
                 "9d463b95.4f6468"
@@ -836,8 +804,8 @@
         "name": "pH ",
         "group": "76ac188b.7279c8",
         "order": 6,
-        "width": 3,
-        "height": 3,
+        "width": "3",
+        "height": "3",
         "gtype": "gage",
         "title": "<i class=\"fa fa-balance-scale\" aria-hidden=\"true\"></i> pH",
         "label": "",
@@ -878,13 +846,13 @@
         "type": "function",
         "z": "8980df89.7c554",
         "name": "Verify",
-        "func": "global.set(\"setting\", msg.payload)\nvar err = {\n    payload: 0\n}\n\nif (msg.payload.max_ph != null && msg.payload.min_ph != null && msg.payload.max_temp != null && msg.payload.min_temp != null)\n{\n    if (msg.payload.max_ph < msg.payload.min_ph || msg.payload.max_temp < msg.payload.min_temp)\n        return err\n    return {payload:1}\n}\nelse return err",
+        "func": "global.set(\"setting\", msg.payload)\nvar err = {\n    payload: 0\n}\n\nif (msg.payload.max_ph != null && msg.payload.min_ph != null && msg.payload.max_temp != null && msg.payload.min_temp != null)\n{\n    if (msg.payload.max_ph < msg.payload.min_ph || msg.payload.max_temp < msg.payload.min_temp)\n        return err\n    return {payload:1}\n}\nelse if (msg.payload.max_ph == null && msg.payload.min_ph == null && msg.payload.max_temp == null && msg.payload.min_temp == null && msg.payload.email != null)\n    return {payload:1}\nreturn err",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 270,
+        "x": 310,
         "y": 300,
         "wires": [
             [
@@ -914,7 +882,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 410,
+        "x": 450,
         "y": 300,
         "wires": [
             [
@@ -972,8 +940,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 350,
-        "y": 220,
+        "x": 280,
+        "y": 60,
         "wires": [
             []
         ]
@@ -999,8 +967,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 150,
-        "y": 220,
+        "x": 110,
+        "y": 60,
         "wires": [
             [
                 "70e81c1f.215524"
@@ -1099,7 +1067,7 @@
         "type": "function",
         "z": "8980df89.7c554",
         "name": "Setting",
-        "func": "var tmp = global.get(\"Fish\")\nvar str_temp = tmp[flow.get(\"Chosen\")][1]\nvar str_ph = tmp[flow.get(\"Chosen\")][2]\nvar arr_temp = str_temp.split(\"-\")\nvar arr_ph = str_ph.split(\"-\")\nvar obj = {\n    max_ph: arr_ph[1],\n    min_ph: arr_ph[0],\n    max_temp: arr_temp[1],\n    min_temp: arr_temp[0]\n}\n\nglobal.set(\"setting\", obj)\nreturn msg",
+        "func": "var tmp = global.get(\"Fish\")\nvar str_temp = tmp[flow.get(\"Chosen\")][1]\nvar str_ph = tmp[flow.get(\"Chosen\")][2]\nvar arr_temp = str_temp.split(\"-\")\nvar arr_ph = str_ph.split(\"-\")\nvar obj = {\n    max_ph: arr_ph[1],\n    min_ph: arr_ph[0],\n    max_temp: arr_temp[1],\n    min_temp: arr_temp[0],\n    email: \"\"\n}\n\nglobal.set(\"setting\", obj)\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1292,7 +1260,7 @@
         "type": "function",
         "z": "df3448ae.3b3be8",
         "name": "Package email",
-        "func": "var newMsg = {\n    topic: \"[IAQUARIUM] Dangerous condition\",\n    to: global.get(\"setting\").email,\n    payload: flow.get(\"mail\")\n}\nreturn newMsg;",
+        "func": "\nvar newMsg = {\n    topic: \"[IAQUARIUM] Dangerous condition\",\n    to: global.get(\"setting\")[\"email\"],\n    payload: flow.get(\"mail\")\n}\nreturn newMsg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1310,7 +1278,7 @@
         "id": "30db5393.73942c",
         "type": "ui_form",
         "z": "8980df89.7c554",
-        "name": "Change username & password",
+        "name": "Account setting",
         "label": "",
         "group": "15b99e9f.1bd151",
         "order": 1,
@@ -1358,7 +1326,7 @@
         "topic": "topic",
         "topicType": "msg",
         "splitLayout": "",
-        "x": 170,
+        "x": 120,
         "y": 560,
         "wires": [
             [
@@ -1377,7 +1345,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 200,
+        "x": 160,
         "y": 500,
         "wires": [
             [
@@ -1404,7 +1372,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 310,
+        "x": 290,
         "y": 100,
         "wires": [
             []
@@ -1431,7 +1399,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 130,
+        "x": 110,
         "y": 100,
         "wires": [
             [
@@ -1510,13 +1478,13 @@
         "id": "d5a40cb3.2ab3",
         "type": "change",
         "z": "8980df89.7c554",
-        "name": "Set",
+        "name": "Updated",
         "rules": [
             {
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "\"Setting updated\"",
+                "to": "Setting updated",
                 "tot": "str"
             }
         ],
@@ -1525,7 +1493,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 330,
+        "x": 320,
         "y": 480,
         "wires": [
             [
@@ -1725,8 +1693,8 @@
         "nl": false,
         "rap": true,
         "rh": 0,
-        "x": 230,
-        "y": 580,
+        "x": 200,
+        "y": 540,
         "wires": [
             [
                 "6b81677f.28f748"
@@ -1745,8 +1713,8 @@
         "nl": false,
         "rap": true,
         "rh": 0,
-        "x": 230,
-        "y": 640,
+        "x": 200,
+        "y": 600,
         "wires": [
             [
                 "3fa936f2.49dfea"
@@ -1758,7 +1726,7 @@
         "type": "ui_led",
         "z": "df3448ae.3b3be8",
         "order": 1,
-        "group": "76ac188b.7279c8",
+        "group": "6cceee71.9d0ba",
         "width": 0,
         "height": 0,
         "label": "<i class=\"fa fa-lightbulb-o\" aria-hidden=\"true\"></i> LED Status ",
@@ -1780,8 +1748,8 @@
         "shape": "circle",
         "showGlow": true,
         "name": "",
-        "x": 430,
-        "y": 640,
+        "x": 360,
+        "y": 600,
         "wires": []
     },
     {
@@ -1789,7 +1757,7 @@
         "type": "ui_led",
         "z": "df3448ae.3b3be8",
         "order": 2,
-        "group": "76ac188b.7279c8",
+        "group": "6cceee71.9d0ba",
         "width": 0,
         "height": 0,
         "label": "<i class=\"fa fa-snowflake-o\" aria-hidden=\"true\"></i> Fan ",
@@ -1811,8 +1779,8 @@
         "shape": "circle",
         "showGlow": true,
         "name": "Fan",
-        "x": 430,
-        "y": 580,
+        "x": 360,
+        "y": 540,
         "wires": []
     },
     {
@@ -1835,9 +1803,7 @@
             [
                 "6d1f7e6a.b3d5d"
             ],
-            [
-                "226cba71.c41056"
-            ]
+            []
         ]
     },
     {
@@ -1855,7 +1821,7 @@
         "expiry": "",
         "broker": "6599e412.12713c",
         "x": 900,
-        "y": 180,
+        "y": 140,
         "wires": []
     },
     {
@@ -1868,7 +1834,7 @@
                 "t": "set",
                 "p": "mail",
                 "pt": "flow",
-                "to": "SYSTEM IS NOT WORKING",
+                "to": "SYSTEM IS NOT RESPONDING",
                 "tot": "str"
             }
         ],
@@ -1877,7 +1843,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 700,
+        "x": 780,
         "y": 380,
         "wires": [
             [
@@ -1908,7 +1874,8 @@
         "y": 180,
         "wires": [
             [
-                "e96abb85.bd51f8"
+                "e96abb85.bd51f8",
+                "37f0ae2e.9ca312"
             ]
         ]
     },
@@ -2097,26 +2064,6 @@
         ]
     },
     {
-        "id": "d8e35163.ea0d1",
-        "type": "ui_template",
-        "z": "df3448ae.3b3be8",
-        "group": "c982fbb8.1deb38",
-        "name": "Clock Toolbar",
-        "order": 2,
-        "width": "0",
-        "height": "0",
-        "format": "<script id=\"titleScript\" type=\"text/javascript\">\n\n$(function() {\n    if($('.md-toolbar-tools').length != 0){\n        loadClock();\n    }else setTimeout(loadClock, 500)\n});\n\nfunction loadClock(){\n    $('#clock').remove();\n    var toolbar = $('.md-toolbar-tools');\n    \n    var div = $('<div/>');\n    var p = $('<p/ id=\"clock\">');\n    \n    div.append(p);\n    div[0].style.margin = '5px 5px 5px auto';\n    toolbar.append(div);\n\n    function displayTitle(lh) {\n        p.text(lh); \n    }\n    \n    function upTime() {\n        var d = new Date();\n        p.text(d.toLocaleString());\n    }\n\n    if(document.clockInterval){ \n            clearInterval(document.clockInterval);\n            document.clockInterval = null;\n    }\n        \n    document.clockInterval = setInterval(upTime,1000);\n}\n\n</script>",
-        "storeOutMessages": false,
-        "fwdInMessages": false,
-        "resendOnRefresh": false,
-        "templateScope": "global",
-        "x": 820,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "14b7038d.58fa3c",
         "type": "mqtt out",
         "z": "8980df89.7c554",
@@ -2216,6 +2163,49 @@
             [
                 "22a2a4cb.84a21c"
             ]
+        ]
+    },
+    {
+        "id": "64e03d5a.633d74",
+        "type": "ui_template",
+        "z": "8980df89.7c554",
+        "group": "c982fbb8.1deb38",
+        "name": "Clock Toolbar",
+        "order": 2,
+        "width": "0",
+        "height": "0",
+        "format": "<script id=\"titleScript\" type=\"text/javascript\">\n\n$(function() {\n    if($('.md-toolbar-tools').length != 0){\n        loadClock();\n    }else setTimeout(loadClock, 500)\n});\n\nfunction loadClock(){\n    $('#clock').remove();\n    var toolbar = $('.md-toolbar-tools');\n    \n    var div = $('<div/>');\n    var p = $('<p/ id=\"clock\">');\n    \n    div.append(p);\n    div[0].style.margin = '5px 5px 5px auto';\n    toolbar.append(div);\n\n    function displayTitle(lh) {\n        p.text(lh); \n    }\n    \n    function upTime() {\n        var d = new Date();\n        p.text(d.toLocaleString());\n    }\n\n    if(document.clockInterval){ \n            clearInterval(document.clockInterval);\n            document.clockInterval = null;\n    }\n        \n    document.clockInterval = setInterval(upTime,1000);\n}\n\n</script>",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": false,
+        "templateScope": "global",
+        "x": 500,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "37f0ae2e.9ca312",
+        "type": "countdown",
+        "z": "df3448ae.3b3be8",
+        "name": "Time-out",
+        "topic": "",
+        "payloadTimerStart": "true",
+        "payloadTimerStartType": "bool",
+        "payloadTimerStop": "false",
+        "payloadTimerStopType": "bool",
+        "timer": "60",
+        "resetWhileRunning": true,
+        "setTimeToNewWhileRunning": false,
+        "startCountdownOnControlMessage": false,
+        "x": 860,
+        "y": 280,
+        "wires": [
+            [
+                "226cba71.c41056"
+            ],
+            []
         ]
     }
 ]
