@@ -242,7 +242,7 @@
         "type": "ui_group",
         "name": "Status",
         "tab": "c85a452c.af0288",
-        "order": 1,
+        "order": 2,
         "disp": true,
         "width": "6",
         "collapse": false
@@ -252,7 +252,7 @@
         "type": "ui_group",
         "name": "Information",
         "tab": "c85a452c.af0288",
-        "order": 2,
+        "order": 3,
         "disp": true,
         "width": "6",
         "collapse": false
@@ -262,25 +262,16 @@
         "type": "ui_group",
         "name": "Change username and password",
         "tab": "c85a452c.af0288",
-        "order": 3,
+        "order": 4,
         "disp": true,
         "width": "6",
         "collapse": false
     },
     {
-        "id": "a80ae9c9.b0b6d8",
-        "type": "ui_tab",
-        "name": "Control",
-        "icon": "dashboard",
-        "order": 4,
-        "disabled": false,
-        "hidden": false
-    },
-    {
         "id": "96f5631c.f024f",
         "type": "ui_group",
         "name": "Control",
-        "tab": "a80ae9c9.b0b6d8",
+        "tab": "",
         "order": 1,
         "disp": true,
         "width": "6",
@@ -304,6 +295,16 @@
         "order": 1,
         "disabled": false,
         "hidden": false
+    },
+    {
+        "id": "e3d094f5.97eed8",
+        "type": "ui_group",
+        "name": "Control",
+        "tab": "c85a452c.af0288",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
     },
     {
         "id": "72c943f7.b0a46c",
@@ -785,7 +786,7 @@
                 "rows": null
             },
             {
-                "label": "email",
+                "label": "Email",
                 "value": "email",
                 "type": "text",
                 "required": false,
@@ -924,7 +925,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 450,
+        "x": 410,
         "y": 300,
         "wires": [
             [
@@ -1081,10 +1082,10 @@
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "Min_temperature",
+        "label": "Min temperature",
         "format": "{{min_temp}}",
         "layout": "row-spread",
-        "x": 710,
+        "x": 700,
         "y": 460,
         "wires": []
     },
@@ -1156,7 +1157,7 @@
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "email",
+        "label": "Email",
         "format": "{{email}}",
         "layout": "row-spread",
         "x": 670,
@@ -1557,8 +1558,8 @@
         "raw": false,
         "topic": "",
         "name": "",
-        "x": 700,
-        "y": 640,
+        "x": 840,
+        "y": 620,
         "wires": []
     },
     {
@@ -1575,8 +1576,8 @@
         "raw": false,
         "topic": "",
         "name": "",
-        "x": 700,
-        "y": 600,
+        "x": 840,
+        "y": 580,
         "wires": []
     },
     {
@@ -1593,8 +1594,8 @@
         "raw": false,
         "topic": "",
         "name": "",
-        "x": 700,
-        "y": 560,
+        "x": 840,
+        "y": 540,
         "wires": []
     },
     {
@@ -1616,8 +1617,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 540,
-        "y": 600,
+        "x": 680,
+        "y": 580,
         "wires": [
             [
                 "a27c22b3.05b65"
@@ -1643,8 +1644,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 530,
-        "y": 640,
+        "x": 670,
+        "y": 620,
         "wires": [
             [
                 "e9079e07.fde1c"
@@ -1670,8 +1671,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 540,
-        "y": 560,
+        "x": 680,
+        "y": 540,
         "wires": [
             [
                 "609ff8e9.509008"
@@ -1697,8 +1698,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 520,
-        "y": 680,
+        "x": 660,
+        "y": 660,
         "wires": [
             [
                 "406d34cf.aa36ac"
@@ -1719,77 +1720,8 @@
         "raw": false,
         "topic": "",
         "name": "",
-        "x": 700,
-        "y": 680,
-        "wires": []
-    },
-    {
-        "id": "c2b5c003.da7b6",
-        "type": "mqtt out",
-        "z": "a843fa9.aa22108",
-        "name": "",
-        "topic": "Web/control/light",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "6599e412.12713c",
-        "x": 390,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "cadbe35b.1a49a",
-        "type": "ui_switch",
-        "z": "a843fa9.aa22108",
-        "name": "",
-        "label": "LED",
-        "tooltip": "",
-        "group": "96f5631c.f024f",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "decouple": "false",
-        "topic": "topic",
-        "topicType": "msg",
-        "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
-        "officon": "",
-        "offcolor": "",
-        "animate": false,
-        "x": 90,
-        "y": 120,
-        "wires": [
-            [
-                "c2b5c003.da7b6",
-                "3c115b28.51fe14"
-            ]
-        ]
-    },
-    {
-        "id": "3c115b28.51fe14",
-        "type": "debug",
-        "z": "a843fa9.aa22108",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 350,
-        "y": 80,
+        "x": 840,
+        "y": 660,
         "wires": []
     },
     {
@@ -1809,57 +1741,6 @@
         "wires": [
             [
                 "6b81677f.28f748"
-            ]
-        ]
-    },
-    {
-        "id": "dded990a.a90c58",
-        "type": "mqtt out",
-        "z": "a843fa9.aa22108",
-        "name": "",
-        "topic": "Web/control/fan",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "6599e412.12713c",
-        "x": 380,
-        "y": 200,
-        "wires": []
-    },
-    {
-        "id": "99821499.7d6388",
-        "type": "ui_switch",
-        "z": "a843fa9.aa22108",
-        "name": "",
-        "label": "Fan",
-        "tooltip": "",
-        "group": "96f5631c.f024f",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "decouple": "false",
-        "topic": "topic",
-        "topicType": "msg",
-        "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
-        "officon": "",
-        "offcolor": "",
-        "animate": false,
-        "x": 90,
-        "y": 200,
-        "wires": [
-            [
-                "dded990a.a90c58"
             ]
         ]
     },
@@ -1992,7 +1873,7 @@
         "id": "226cba71.c41056",
         "type": "change",
         "z": "df3448ae.3b3be8",
-        "name": "System collapsed",
+        "name": "System failed",
         "rules": [
             {
                 "t": "set",
@@ -2007,7 +1888,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 710,
+        "x": 700,
         "y": 380,
         "wires": [
             [
@@ -2244,6 +2125,108 @@
         "y": 80,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "14b7038d.58fa3c",
+        "type": "mqtt out",
+        "z": "8980df89.7c554",
+        "name": "",
+        "topic": "Web/control/light",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "6599e412.12713c",
+        "x": 350,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "a5c305ce.7ea148",
+        "type": "ui_switch",
+        "z": "8980df89.7c554",
+        "name": "",
+        "label": "LED",
+        "tooltip": "",
+        "group": "e3d094f5.97eed8",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "x": 90,
+        "y": 640,
+        "wires": [
+            [
+                "14b7038d.58fa3c"
+            ]
+        ]
+    },
+    {
+        "id": "22a2a4cb.84a21c",
+        "type": "mqtt out",
+        "z": "8980df89.7c554",
+        "name": "",
+        "topic": "Web/control/fan",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "6599e412.12713c",
+        "x": 340,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "eafa79d.6fd7b88",
+        "type": "ui_switch",
+        "z": "8980df89.7c554",
+        "name": "",
+        "label": "Fan",
+        "tooltip": "",
+        "group": "e3d094f5.97eed8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "x": 90,
+        "y": 680,
+        "wires": [
+            [
+                "22a2a4cb.84a21c"
+            ]
         ]
     }
 ]
