@@ -52,7 +52,7 @@
         "id": "6a8a97fd.1472f8",
         "type": "ui_base",
         "theme": {
-            "name": "theme-light",
+            "name": "theme-dark",
             "lightTheme": {
                 "default": "#0094CE",
                 "baseColor": "#0094CE",
@@ -62,68 +62,70 @@
             },
             "darkTheme": {
                 "default": "#097479",
-                "baseColor": "#097479",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
+                "baseColor": "#10b9c1",
+                "baseFont": "Tahoma,Geneva,sans-serif",
+                "edited": true,
+                "reset": false
             },
             "customTheme": {
                 "name": "Untitled Theme 1",
                 "default": "#4B7930",
-                "baseColor": "#4B7930",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                "baseColor": "#6092e1",
+                "baseFont": "Tahoma,Geneva,sans-serif",
+                "reset": false
             },
             "themeState": {
                 "base-color": {
-                    "default": "#0094CE",
-                    "value": "#0094CE",
-                    "edited": false
+                    "default": "#097479",
+                    "value": "#10b9c1",
+                    "edited": true
                 },
                 "page-titlebar-backgroundColor": {
-                    "value": "#0094CE",
+                    "value": "#10b9c1",
                     "edited": false
                 },
                 "page-backgroundColor": {
-                    "value": "#fafafa",
-                    "edited": false
+                    "value": "#111111",
+                    "edited": true
                 },
                 "page-sidebar-backgroundColor": {
                     "value": "#ffffff",
                     "edited": false
                 },
                 "group-textColor": {
-                    "value": "#1bbfff",
+                    "value": "#30e5ee",
                     "edited": false
                 },
                 "group-borderColor": {
-                    "value": "#ffffff",
+                    "value": "#555555",
                     "edited": false
                 },
                 "group-backgroundColor": {
-                    "value": "#ffffff",
+                    "value": "#333333",
                     "edited": false
                 },
                 "widget-textColor": {
-                    "value": "#111111",
-                    "edited": false
+                    "value": "#eeeeee",
+                    "edited": true
                 },
                 "widget-backgroundColor": {
-                    "value": "#0094ce",
+                    "value": "#10b9c1",
                     "edited": false
                 },
                 "widget-borderColor": {
-                    "value": "#ffffff",
+                    "value": "#333333",
                     "edited": false
                 },
                 "base-font": {
-                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                    "value": "Tahoma,Geneva,sans-serif"
                 }
             },
             "angularTheme": {
-                "primary": "indigo",
-                "accents": "blue",
+                "primary": "blue",
+                "accents": "pink",
                 "warn": "red",
-                "background": "grey",
-                "palette": "light"
+                "background": "blue",
+                "palette": "dark"
             }
         },
         "site": {
@@ -149,7 +151,7 @@
         "id": "2e22bb38.8d9534",
         "type": "ui_tab",
         "name": "Wikipedia",
-        "icon": "dashboard",
+        "icon": "fa-wikipedia-w",
         "order": 2,
         "disabled": false,
         "hidden": false
@@ -194,7 +196,7 @@
         "id": "eac5fb6a.d348e8",
         "type": "ui_tab",
         "name": "Condition",
-        "icon": "dashboard",
+        "icon": "fa-signal",
         "order": 3,
         "disabled": false,
         "hidden": false
@@ -213,7 +215,7 @@
         "id": "4c9b62aa.3406ac",
         "type": "ui_tab",
         "name": "Login",
-        "icon": "dashboard",
+        "icon": "fa-sign-in",
         "order": 1,
         "disabled": false,
         "hidden": false
@@ -225,14 +227,14 @@
         "tab": "4c9b62aa.3406ac",
         "order": 1,
         "disp": false,
-        "width": "6",
+        "width": 6,
         "collapse": false
     },
     {
         "id": "c85a452c.af0288",
         "type": "ui_tab",
         "name": "Setting",
-        "icon": "dashboard",
+        "icon": "fa-cog",
         "order": 5,
         "disabled": false,
         "hidden": false
@@ -331,13 +333,13 @@
         "id": "7ac4529d.753f2c",
         "type": "ui_gauge",
         "z": "df3448ae.3b3be8",
-        "name": "",
+        "name": "Water Level",
         "group": "76ac188b.7279c8",
         "order": 3,
-        "width": "3",
-        "height": "3",
+        "width": 3,
+        "height": 3,
         "gtype": "wave",
-        "title": "Water ",
+        "title": "<i class=\"fa fa-tint\" aria-hidden=\"true\"></i> Water ",
         "label": "%",
         "format": "{{msg.payload.water}}",
         "min": 0,
@@ -349,7 +351,7 @@
         ],
         "seg1": "",
         "seg2": "",
-        "x": 490,
+        "x": 510,
         "y": 340,
         "wires": []
     },
@@ -381,13 +383,13 @@
         "id": "7bf5c94b.e16a68",
         "type": "ui_gauge",
         "z": "df3448ae.3b3be8",
-        "name": "",
+        "name": "Food Level",
         "group": "76ac188b.7279c8",
         "order": 4,
-        "width": "3",
-        "height": "3",
+        "width": 3,
+        "height": 3,
         "gtype": "wave",
-        "title": "Food",
+        "title": "<i class=\"fa fa-cutlery\" aria-hidden=\"true\"></i> Food",
         "label": "%",
         "format": "{{msg.payload.food}}",
         "min": 0,
@@ -399,7 +401,7 @@
         ],
         "seg1": "",
         "seg2": "",
-        "x": 670,
+        "x": 690,
         "y": 280,
         "wires": []
     },
@@ -439,7 +441,7 @@
         "type": "ui_form",
         "z": "27157737.c8f3b8",
         "name": "Login form ",
-        "label": "",
+        "label": "LOGIN",
         "group": "9bb4db2c.707848",
         "order": 1,
         "width": 6,
@@ -543,7 +545,7 @@
         "type": "function",
         "z": "27157737.c8f3b8",
         "name": "Transition",
-        "func": "msg.payload = {\n    tab: \"Condition\",\n    tabs: \n    {\n        enable:[\"Wikipedia\",\"Condition\"],\n        hide:[\"Login\"],\n        show:[\"Wikipedia\",\"Condition\"],\n    }\n}\n\nreturn msg;",
+        "func": "msg.payload = {\n    tab: \"Condition\",\n    tabs: \n    {\n        enable:[\"Wikipedia\",\"Condition\",\"Setting\"],\n        hide:[\"Login\"],\n        show:[\"Wikipedia\",\"Condition\",\"Setting\"],\n    }\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -573,12 +575,12 @@
         ],
         "repeat": "",
         "crontab": "",
-        "once": false,
+        "once": true,
         "onceDelay": 0.1,
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 100,
+        "x": 110,
         "y": 560,
         "wires": [
             [
@@ -591,7 +593,7 @@
         "type": "function",
         "z": "27157737.c8f3b8",
         "name": "Login session",
-        "func": "msg.payload = \n{tab:\"Login\",\n tabs: {\n    disable:[\"Wikipedia\",\"Condition\"],\n    hide:[\"Wikipedia\",\"Condition\"],\n    show:[\"Login\"],\n    focus:true\n }\n}\nreturn msg;",
+        "func": "msg.payload = \n{tab:\"Login\",\n tabs: {\n    disable:[\"Wikipedia\",\"Condition\",\"Setting\"],\n    hide:[\"Wikipedia\",\"Condition\",\"Setting\"],\n    show:[\"Login\"],\n    focus:true\n }\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -635,19 +637,6 @@
         "wires": []
     },
     {
-        "id": "85672d75.e27af",
-        "type": "users_isloggedin",
-        "z": "27157737.c8f3b8",
-        "name": "",
-        "enableCustomHandler": false,
-        "outputs": 1,
-        "x": 380,
-        "y": 260,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "6052d29f.d7c6dc",
         "type": "function",
         "z": "8980df89.7c554",
@@ -670,8 +659,8 @@
         "id": "d1d5b690.29dcf8",
         "type": "ui_dropdown",
         "z": "8980df89.7c554",
-        "name": "",
-        "label": "Fish template",
+        "name": "Fish template",
+        "label": "<i class=\"fa fa-building\" aria-hidden=\"true\"></i> Fish template",
         "tooltip": "",
         "place": "Select fish",
         "group": "8ca6549a.4df1c8",
@@ -750,8 +739,8 @@
         "id": "c041f01c.cd025",
         "type": "ui_form",
         "z": "8980df89.7c554",
-        "name": "",
-        "label": "Custom condition",
+        "name": "Custom condition",
+        "label": "<i class=\"fa fa-wrench\" aria-hidden=\"true\"></i> Custom condition",
         "group": "8ca6549a.4df1c8",
         "order": 2,
         "width": 0,
@@ -818,13 +807,13 @@
         "id": "fdafa21b.a1a62",
         "type": "ui_gauge",
         "z": "df3448ae.3b3be8",
-        "name": "",
+        "name": "Temperature",
         "group": "76ac188b.7279c8",
         "order": 5,
-        "width": "3",
-        "height": "3",
+        "width": 3,
+        "height": 3,
         "gtype": "gage",
-        "title": "Temperature",
+        "title": "<i class=\"fa fa-thermometer-full\" aria-hidden=\"true\"></i> Temperature",
         "label": "°C",
         "format": "{{msg.payload.temp}}",
         "min": "-50",
@@ -844,13 +833,13 @@
         "id": "5cfd9947.228c98",
         "type": "ui_gauge",
         "z": "df3448ae.3b3be8",
-        "name": "",
+        "name": "pH ",
         "group": "76ac188b.7279c8",
         "order": 6,
-        "width": "3",
-        "height": "3",
+        "width": 3,
+        "height": 3,
         "gtype": "gage",
-        "title": "pH",
+        "title": "<i class=\"fa fa-balance-scale\" aria-hidden=\"true\"></i> pH",
         "label": "",
         "format": "{{msg.payload.ph}}",
         "min": 0,
@@ -1049,8 +1038,8 @@
         "order": 3,
         "width": 0,
         "height": 0,
-        "name": "",
-        "label": "Max pH",
+        "name": "Max pH",
+        "label": "<i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i> Max pH",
         "format": "{{max_ph}}",
         "layout": "row-spread",
         "x": 680,
@@ -1065,8 +1054,8 @@
         "order": 4,
         "width": 0,
         "height": 0,
-        "name": "",
-        "label": "Min pH",
+        "name": "Min pH",
+        "label": "<i class=\"fa fa-minus-circle\" aria-hidden=\"true\"></i> Min pH",
         "format": "{{min_ph}}",
         "layout": "row-spread",
         "x": 680,
@@ -1081,8 +1070,8 @@
         "order": 1,
         "width": 0,
         "height": 0,
-        "name": "",
-        "label": "Min temperature",
+        "name": "Min temperature",
+        "label": "<i class=\"fa fa-thermometer-empty\" aria-hidden=\"true\"></i> Min temperature",
         "format": "{{min_temp}}",
         "layout": "row-spread",
         "x": 700,
@@ -1097,8 +1086,8 @@
         "order": 2,
         "width": 0,
         "height": 0,
-        "name": "",
-        "label": "Max temperature",
+        "name": "Max temperature",
+        "label": "<i class=\"fa fa-thermometer-full\" aria-hidden=\"true\"></i> Max temperature",
         "format": "{{max_temp}}",
         "layout": "row-spread",
         "x": 710,
@@ -1156,8 +1145,8 @@
         "order": 5,
         "width": 0,
         "height": 0,
-        "name": "",
-        "label": "Email",
+        "name": "Email",
+        "label": "<i class=\"fa fa-envelope\" aria-hidden=\"true\"></i> Email",
         "format": "{{email}}",
         "layout": "row-spread",
         "x": 670,
@@ -1321,7 +1310,7 @@
         "id": "30db5393.73942c",
         "type": "ui_form",
         "z": "8980df89.7c554",
-        "name": "",
+        "name": "Change username & password",
         "label": "",
         "group": "15b99e9f.1bd151",
         "order": 1,
@@ -1329,28 +1318,28 @@
         "height": 0,
         "options": [
             {
-                "label": "username",
+                "label": "Username",
                 "value": "uname",
                 "type": "text",
                 "required": false,
                 "rows": null
             },
             {
-                "label": "old password",
+                "label": "Old password",
                 "value": "opwd",
                 "type": "password",
                 "required": false,
                 "rows": null
             },
             {
-                "label": "new password",
+                "label": "New password",
                 "value": "npwd",
                 "type": "password",
                 "required": false,
                 "rows": null
             },
             {
-                "label": "confirm new password",
+                "label": "Confirm new password",
                 "value": "cnpwd",
                 "type": "password",
                 "required": false,
@@ -1369,7 +1358,7 @@
         "topic": "topic",
         "topicType": "msg",
         "splitLayout": "",
-        "x": 90,
+        "x": 130,
         "y": 560,
         "wires": [
             [
@@ -1388,8 +1377,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 220,
-        "y": 560,
+        "x": 200,
+        "y": 500,
         "wires": [
             [
                 "6f81d1c.379643"
@@ -1482,8 +1471,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 4,
-        "x": 350,
-        "y": 560,
+        "x": 430,
+        "y": 540,
         "wires": [
             [
                 "6a6be36a.c733cc"
@@ -1772,7 +1761,7 @@
         "group": "76ac188b.7279c8",
         "width": 0,
         "height": 0,
-        "label": "LED Status ",
+        "label": "<i class=\"fa fa-lightbulb-o\" aria-hidden=\"true\"></i> LED Status ",
         "labelPlacement": "left",
         "labelAlignment": "left",
         "colorForValue": [
@@ -1803,7 +1792,7 @@
         "group": "76ac188b.7279c8",
         "width": 0,
         "height": 0,
-        "label": "Fan ",
+        "label": "<i class=\"fa fa-snowflake-o\" aria-hidden=\"true\"></i> Fan ",
         "labelPlacement": "left",
         "labelAlignment": "left",
         "colorForValue": [
@@ -2149,8 +2138,8 @@
         "id": "a5c305ce.7ea148",
         "type": "ui_switch",
         "z": "8980df89.7c554",
-        "name": "",
-        "label": "LED",
+        "name": "LED",
+        "label": "<i class=\"fa fa-lightbulb-o\" aria-hidden=\"true\"></i> LED",
         "tooltip": "",
         "group": "e3d094f5.97eed8",
         "order": 0,
@@ -2200,8 +2189,8 @@
         "id": "eafa79d.6fd7b88",
         "type": "ui_switch",
         "z": "8980df89.7c554",
-        "name": "",
-        "label": "Fan",
+        "name": "Fan",
+        "label": "<i class=\"fa fa-snowflake-o\" aria-hidden=\"true\"></i> Fan",
         "tooltip": "",
         "group": "e3d094f5.97eed8",
         "order": 1,
