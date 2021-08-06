@@ -250,7 +250,7 @@
     {
         "id": "8ca6549a.4df1c8",
         "type": "ui_group",
-        "name": "Additional information",
+        "name": "Information",
         "tab": "c85a452c.af0288",
         "order": 2,
         "disp": true,
@@ -285,6 +285,25 @@
         "disp": true,
         "width": "6",
         "collapse": false
+    },
+    {
+        "id": "c982fbb8.1deb38",
+        "type": "ui_group",
+        "name": "hidden_group",
+        "tab": "7c447e96.4b96a",
+        "order": 1,
+        "disp": false,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "7c447e96.4b96a",
+        "type": "ui_tab",
+        "name": "Zooland Sys",
+        "icon": "home",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
     },
     {
         "id": "72c943f7.b0a46c",
@@ -651,7 +670,7 @@
         "type": "ui_dropdown",
         "z": "8980df89.7c554",
         "name": "",
-        "label": "",
+        "label": "Fish template",
         "tooltip": "",
         "place": "Select fish",
         "group": "8ca6549a.4df1c8",
@@ -670,7 +689,7 @@
         "payload": "",
         "topic": "topic",
         "topicType": "msg",
-        "x": 440,
+        "x": 460,
         "y": 140,
         "wires": [
             [
@@ -718,7 +737,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 610,
+        "x": 670,
         "y": 140,
         "wires": [
             [
@@ -731,7 +750,7 @@
         "type": "ui_form",
         "z": "8980df89.7c554",
         "name": "",
-        "label": "",
+        "label": "Custom condition",
         "group": "8ca6549a.4df1c8",
         "order": 2,
         "width": 0,
@@ -875,7 +894,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 250,
+        "x": 270,
         "y": 300,
         "wires": [
             [
@@ -1225,7 +1244,7 @@
         "type": "function",
         "z": "df3448ae.3b3be8",
         "name": "Check",
-        "func": "var setting = global.get(\"setting\")\nmail = \"\"\nif (setting == null)\n{\nmsg.payload = mail\nreturn msg\n}\n\nif (setting.max_temp < msg.payload.temp)\nmail += \"Current temperature is higher than usual\\nMaximum: \" + setting.max_temp + \"\\nCurrent: \" + msg.payload.temp + \"\\n\"\nif (setting.max_ph < msg.payload.ph)\nmail += \"Current pH is higher than usual\\nMaximum: \" + setting.max_ph + \"\\nCurrent: \" + msg.payload.ph + \"\\n\"\nif (setting.min_temp > msg.payload.temp)\nmail += \"Current temperature is lower than usual\\nMinimum: \" + setting.min_temp + \"\\nCurrent: \" + msg.payload.temp + \"\\n\"\nif (setting.min_ph > msg.payload.ph)\nmail += \"Current pH is lower than usual\\nMinimum: \" + setting.min_ph + \"\\nCurrent: \" + msg.payload.ph + \"\\n\"\nmsg.payload = mail\nflow.set(\"mail\",mail)\nreturn msg;",
+        "func": "var setting = global.get(\"setting\")\nmail = \"\"\nif (setting == null)\n{\nmsg.payload = mail\nreturn msg\n}\n\nif (setting.max_temp < msg.payload.temp)\nmail += \"Current temperature is higher than usual\\nMaximum: \" + setting.max_temp + \"\\nCurrent: \" + msg.payload.temp + \"\\n\"\nif (setting.max_ph < msg.payload.ph)\nmail += \"Current pH is higher than usual\\nMaximum: \" + setting.max_ph + \"\\nCurrent: \" + msg.payload.ph + \"\\n\"\nif (setting.min_temp > msg.payload.temp)\nmail += \"Current temperature is lower than usual\\nMinimum: \" + setting.min_temp + \"\\nCurrent: \" + msg.payload.temp + \"\\n\"\nif (setting.min_ph > msg.payload.ph)\nmail += \"Current pH is lower than usual\\nMinimum: \" + setting.min_ph + \"\\nCurrent: \" + msg.payload.ph + \"\\n\"\nif (msg.payload.food < 10)\nmail += \"Current amount of food is less than 10% \\n\"\nif (msg.payload.water < 50)\nmail += \"Current level of water is less than 50% \\n\"\nmsg.payload = mail\nflow.set(\"mail\",mail)\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -2205,6 +2224,26 @@
             [
                 "1eddb34c.7d7d1d"
             ]
+        ]
+    },
+    {
+        "id": "d8e35163.ea0d1",
+        "type": "ui_template",
+        "z": "df3448ae.3b3be8",
+        "group": "c982fbb8.1deb38",
+        "name": "Clock Toolbar",
+        "order": 2,
+        "width": "0",
+        "height": "0",
+        "format": "<script id=\"titleScript\" type=\"text/javascript\">\n\n$(function() {\n    if($('.md-toolbar-tools').length != 0){\n        loadClock();\n    }else setTimeout(loadClock, 500)\n});\n\nfunction loadClock(){\n    $('#clock').remove();\n    var toolbar = $('.md-toolbar-tools');\n    \n    var div = $('<div/>');\n    var p = $('<p/ id=\"clock\">');\n    \n    div.append(p);\n    div[0].style.margin = '5px 5px 5px auto';\n    toolbar.append(div);\n\n    function displayTitle(lh) {\n        p.text(lh); \n    }\n    \n    function upTime() {\n        var d = new Date();\n        p.text(d.toLocaleString());\n    }\n\n    if(document.clockInterval){ \n            clearInterval(document.clockInterval);\n            document.clockInterval = null;\n    }\n        \n    document.clockInterval = setInterval(upTime,1000);\n}\n\n</script>",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": false,
+        "templateScope": "global",
+        "x": 820,
+        "y": 80,
+        "wires": [
+            []
         ]
     }
 ]
