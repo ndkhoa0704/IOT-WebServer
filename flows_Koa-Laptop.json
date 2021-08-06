@@ -502,16 +502,22 @@
         "rules": [
             {
                 "t": "true"
+            },
+            {
+                "t": "false"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 1,
+        "outputs": 2,
         "x": 470,
         "y": 360,
         "wires": [
             [
                 "3aa46610.d9507a"
+            ],
+            [
+                "f8be2467.5690f8"
             ]
         ]
     },
@@ -2246,6 +2252,43 @@
         "wires": [
             [
                 "3ea29d2.fdbec62"
+            ]
+        ]
+    },
+    {
+        "id": "1a71e7b0.4cb088",
+        "type": "ui_toast",
+        "z": "27157737.c8f3b8",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "#FF0000",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": true,
+        "topic": "",
+        "name": "",
+        "x": 800,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "f8be2467.5690f8",
+        "type": "template",
+        "z": "27157737.c8f3b8",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<p style=\"color:Tomato;\"> Invalid username or password !</p>",
+        "output": "str",
+        "x": 590,
+        "y": 300,
+        "wires": [
+            [
+                "1a71e7b0.4cb088"
             ]
         ]
     }
