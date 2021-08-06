@@ -1173,7 +1173,7 @@
         "type": "function",
         "z": "df3448ae.3b3be8",
         "name": "Package email",
-        "func": "\nvar newMsg = {\n    topic: \"[IAQUARIUM] Dangerous condition\",\n    to: global.get(\"setting\")[\"email\"],\n    payload: flow.get(\"mail\")\n}\nreturn newMsg;",
+        "func": "var newMsg = {\n    topic: \"[IAQUARIUM] Dangerous condition\",\n    to: global.get(\"setting\")[\"email\"],\n    payload: flow.get(\"mail\")\n}\nreturn newMsg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1794,7 +1794,7 @@
                 "vt": "str"
             }
         ],
-        "repeat": "5",
+        "repeat": "30",
         "crontab": "",
         "once": true,
         "onceDelay": "1",
@@ -1878,9 +1878,7 @@
         "propertyType": "msg",
         "rules": [
             {
-                "t": "neq",
-                "v": "",
-                "vt": "str"
+                "t": "nnull"
             }
         ],
         "checkall": "true",
