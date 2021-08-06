@@ -2160,5 +2160,63 @@
         "x": 900,
         "y": 480,
         "wires": []
+    },
+    {
+        "id": "1263b51c.987b7b",
+        "type": "ui_button",
+        "z": "8980df89.7c554",
+        "name": "Log out",
+        "group": "15b99e9f.1bd151",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Log out",
+        "tooltip": "",
+        "color": "#FF0000",
+        "bgcolor": "",
+        "icon": "fa-sign-out",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 110,
+        "y": 760,
+        "wires": [
+            [
+                "523fa0f.c86966"
+            ]
+        ]
+    },
+    {
+        "id": "523fa0f.c86966",
+        "type": "function",
+        "z": "8980df89.7c554",
+        "name": "Logout session",
+        "func": "msg.payload = \n{tab:\"Login\",\n tabs: {\n    disable:[\"Wikipedia\",\"Condition\",\"Setting\"],\n    hide:[\"Wikipedia\",\"Condition\",\"Setting\"],\n    show:[\"Login\"],\n    focus:true\n }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 760,
+        "wires": [
+            [
+                "b88d8eb7.8e588"
+            ]
+        ]
+    },
+    {
+        "id": "b88d8eb7.8e588",
+        "type": "ui_ui_control",
+        "z": "8980df89.7c554",
+        "name": "Logout session",
+        "events": "all",
+        "x": 500,
+        "y": 760,
+        "wires": [
+            []
+        ]
     }
 ]
