@@ -605,8 +605,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 270,
-        "y": 200,
+        "x": 290,
+        "y": 280,
         "wires": [
             [
                 "d1d5b690.29dcf8"
@@ -637,8 +637,8 @@
         "payload": "",
         "topic": "topic",
         "topicType": "msg",
-        "x": 440,
-        "y": 200,
+        "x": 160,
+        "y": 340,
         "wires": [
             [
                 "b53b37d5.905658"
@@ -667,7 +667,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 110,
-        "y": 200,
+        "y": 280,
         "wires": [
             [
                 "6052d29f.d7c6dc"
@@ -685,8 +685,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 250,
-        "y": 260,
+        "x": 150,
+        "y": 400,
         "wires": [
             [
                 "9d463b95.4f6468"
@@ -745,8 +745,8 @@
         "topic": "topic",
         "topicType": "msg",
         "splitLayout": "",
-        "x": 110,
-        "y": 300,
+        "x": 130,
+        "y": 200,
         "wires": [
             [
                 "bffbf3c8.6efda"
@@ -817,7 +817,7 @@
         "finalize": "",
         "libs": [],
         "x": 310,
-        "y": 300,
+        "y": 200,
         "wires": [
             [
                 "e2417721.944e38"
@@ -846,8 +846,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 450,
-        "y": 300,
+        "x": 470,
+        "y": 260,
         "wires": [
             [
                 "9ed62659.f7b958"
@@ -876,8 +876,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 280,
-        "y": 120,
+        "x": 400,
+        "y": 100,
         "wires": [
             []
         ]
@@ -903,8 +903,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 110,
-        "y": 120,
+        "x": 230,
+        "y": 100,
         "wires": [
             [
                 "70e81c1f.215524"
@@ -923,7 +923,7 @@
         "label": "<i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i> Max pH",
         "format": "{{max_ph}}",
         "layout": "row-spread",
-        "x": 600,
+        "x": 640,
         "y": 340,
         "wires": []
     },
@@ -939,7 +939,7 @@
         "label": "<i class=\"fa fa-minus-circle\" aria-hidden=\"true\"></i> Min pH",
         "format": "{{min_ph}}",
         "layout": "row-spread",
-        "x": 600,
+        "x": 640,
         "y": 380,
         "wires": []
     },
@@ -955,7 +955,7 @@
         "label": "<i class=\"fa fa-thermometer-empty\" aria-hidden=\"true\"></i> Min temperature",
         "format": "{{min_temp}}",
         "layout": "row-spread",
-        "x": 620,
+        "x": 660,
         "y": 460,
         "wires": []
     },
@@ -971,7 +971,7 @@
         "label": "<i class=\"fa fa-thermometer-full\" aria-hidden=\"true\"></i> Max temperature",
         "format": "{{max_temp}}",
         "layout": "row-spread",
-        "x": 630,
+        "x": 670,
         "y": 420,
         "wires": []
     },
@@ -986,8 +986,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 190,
-        "y": 360,
+        "x": 170,
+        "y": 460,
         "wires": [
             [
                 "3ea29d2.fdbec62"
@@ -1005,8 +1005,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 380,
-        "y": 360,
+        "x": 420,
+        "y": 400,
         "wires": [
             [
                 "32607c0a.a2cde4",
@@ -1030,7 +1030,7 @@
         "label": "<i class=\"fa fa-envelope\" aria-hidden=\"true\"></i> Email",
         "format": "{{email}}",
         "layout": "row-spread",
-        "x": 590,
+        "x": 630,
         "y": 500,
         "wires": []
     },
@@ -1293,8 +1293,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 290,
-        "y": 160,
+        "x": 410,
+        "y": 140,
         "wires": [
             []
         ]
@@ -1320,8 +1320,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 110,
-        "y": 160,
+        "x": 230,
+        "y": 140,
         "wires": [
             [
                 "26ca98d.2963968"
@@ -1718,7 +1718,7 @@
         "method": "get",
         "action": "",
         "sheet": "1-RCkou1-fFh03lOdM4pBDjvVid5J3f6aVKq9PC3tQeE",
-        "cells": "Sheet1!A2:F6",
+        "cells": "Sheet1!A2:F8",
         "flatten": false,
         "name": "",
         "x": 350,
@@ -1794,10 +1794,10 @@
                 "vt": "str"
             }
         ],
-        "repeat": "30",
+        "repeat": "",
         "crontab": "",
         "once": true,
-        "onceDelay": "1",
+        "onceDelay": "0.1",
         "topic": "",
         "payload": "",
         "payloadType": "date",
@@ -1958,7 +1958,7 @@
         "expiry": "",
         "broker": "6599e412.12713c",
         "x": 240,
-        "y": 680,
+        "y": 700,
         "wires": []
     },
     {
@@ -1987,7 +1987,7 @@
         "offcolor": "",
         "animate": false,
         "x": 90,
-        "y": 680,
+        "y": 700,
         "wires": [
             [
                 "22a2a4cb.84a21c"
@@ -2008,8 +2008,8 @@
         "fwdInMessages": false,
         "resendOnRefresh": false,
         "templateScope": "global",
-        "x": 560,
-        "y": 140,
+        "x": 600,
+        "y": 100,
         "wires": [
             []
         ]
@@ -2168,8 +2168,8 @@
         "topic": "topic",
         "topicType": "msg",
         "splitLayout": "",
-        "x": 90,
-        "y": 420,
+        "x": 70,
+        "y": 500,
         "wires": [
             [
                 "782db343.5a7fbc"
@@ -2195,8 +2195,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 290,
-        "y": 80,
+        "x": 410,
+        "y": 60,
         "wires": [
             []
         ]
@@ -2222,8 +2222,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 110,
-        "y": 80,
+        "x": 230,
+        "y": 60,
         "wires": [
             [
                 "2023c4ef.bb43cc"
@@ -2241,8 +2241,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 240,
-        "y": 420,
+        "x": 220,
+        "y": 500,
         "wires": [
             [
                 "3ea29d2.fdbec62"
