@@ -263,16 +263,6 @@
         "collapse": false
     },
     {
-        "id": "96f5631c.f024f",
-        "type": "ui_group",
-        "name": "Control",
-        "tab": "",
-        "order": 1,
-        "disp": true,
-        "width": "6",
-        "collapse": false
-    },
-    {
         "id": "c982fbb8.1deb38",
         "type": "ui_group",
         "name": "hidden_group",
@@ -718,35 +708,28 @@
                 "label": "Min pH",
                 "value": "min_ph",
                 "type": "number",
-                "required": false,
+                "required": true,
                 "rows": null
             },
             {
                 "label": "Max pH",
                 "value": "max_ph",
                 "type": "number",
-                "required": false,
+                "required": true,
                 "rows": null
             },
             {
                 "label": "Min Temperature",
                 "value": "min_temp",
                 "type": "number",
-                "required": false,
+                "required": true,
                 "rows": null
             },
             {
                 "label": "Max Temperature",
                 "value": "max_temp",
                 "type": "number",
-                "required": false,
-                "rows": null
-            },
-            {
-                "label": "Email",
-                "value": "email",
-                "type": "text",
-                "required": false,
+                "required": true,
                 "rows": null
             }
         ],
@@ -754,8 +737,7 @@
             "min_ph": "",
             "max_ph": "",
             "min_temp": "",
-            "max_temp": "",
-            "email": ""
+            "max_temp": ""
         },
         "payload": "",
         "submit": "Submit",
@@ -828,7 +810,7 @@
         "type": "function",
         "z": "8980df89.7c554",
         "name": "Verify",
-        "func": "global.set(\"setting\", msg.payload)\nvar err = {\n    payload: 0\n}\n\nif (msg.payload.max_ph != null && msg.payload.min_ph != null && msg.payload.max_temp != null && msg.payload.min_temp != null)\n{\n    if (msg.payload.max_ph < msg.payload.min_ph || msg.payload.max_temp < msg.payload.min_temp)\n        return err\n    return {payload:1}\n}\nelse if (msg.payload.max_ph == null && msg.payload.min_ph == null && msg.payload.max_temp == null && msg.payload.min_temp == null && msg.payload.email != \"\")\n    return {payload:1}\nreturn err",
+        "func": "global.set(\"setting\", msg.payload)\nvar err = {\n    payload: 0\n}\nif (msg.payload.max_ph < msg.payload.min_ph || msg.payload.max_temp < msg.payload.min_temp)\n    return err\nreturn {payload:1}",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -868,38 +850,10 @@
         "y": 300,
         "wires": [
             [
-                "1b7c5c37.e941e4",
-                "a9bbd598.4d8fe8"
+                "9ed62659.f7b958"
             ],
             [
                 "3ea29d2.fdbec62"
-            ]
-        ]
-    },
-    {
-        "id": "1b7c5c37.e941e4",
-        "type": "change",
-        "z": "8980df89.7c554",
-        "name": "Error",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "Invalid information",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 610,
-        "y": 300,
-        "wires": [
-            [
-                "aa91de1d.23ee1"
             ]
         ]
     },
@@ -955,29 +909,6 @@
             [
                 "70e81c1f.215524"
             ]
-        ]
-    },
-    {
-        "id": "a9bbd598.4d8fe8",
-        "type": "change",
-        "z": "8980df89.7c554",
-        "name": "",
-        "rules": [
-            {
-                "t": "delete",
-                "p": "setting",
-                "pt": "global"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 660,
-        "y": 260,
-        "wires": [
-            []
         ]
     },
     {
@@ -1049,14 +980,14 @@
         "type": "function",
         "z": "8980df89.7c554",
         "name": "Setting",
-        "func": "var tmp = global.get(\"Fish\")\nvar str_temp = tmp[flow.get(\"Chosen\")][1]\nvar str_ph = tmp[flow.get(\"Chosen\")][2]\nvar arr_temp = str_temp.split(\"-\")\nvar arr_ph = str_ph.split(\"-\")\nvar obj = {\n    max_ph: arr_ph[1],\n    min_ph: arr_ph[0],\n    max_temp: arr_temp[1],\n    min_temp: arr_temp[0],\n    email: \"\"\n}\n\nglobal.set(\"setting\", obj)\nreturn msg",
+        "func": "var tmp = global.get(\"Fish\")\nvar str_temp = tmp[flow.get(\"Chosen\")][1]\nvar str_ph = tmp[flow.get(\"Chosen\")][2]\nvar arr_temp = str_temp.split(\"-\")\nvar arr_ph = str_ph.split(\"-\")\nvar obj = {\n    max_ph: arr_ph[1],\n    min_ph: arr_ph[0],\n    max_temp: arr_temp[1],\n    min_temp: arr_temp[0],\n    email: global.get(\"setting\").email\n}\n\nglobal.set(\"setting\", obj)\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 210,
-        "y": 400,
+        "x": 190,
+        "y": 360,
         "wires": [
             [
                 "3ea29d2.fdbec62"
@@ -1074,8 +1005,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 400,
-        "y": 400,
+        "x": 380,
+        "y": 360,
         "wires": [
             [
                 "32607c0a.a2cde4",
@@ -1271,35 +1202,35 @@
                 "label": "New username",
                 "value": "uname",
                 "type": "text",
-                "required": false,
+                "required": true,
                 "rows": null
             },
             {
                 "label": "Old username",
                 "value": "ouname",
                 "type": "password",
-                "required": false,
+                "required": true,
                 "rows": null
             },
             {
                 "label": "Old password",
                 "value": "opwd",
                 "type": "password",
-                "required": false,
+                "required": true,
                 "rows": null
             },
             {
                 "label": "New password",
                 "value": "npwd",
                 "type": "password",
-                "required": false,
+                "required": true,
                 "rows": null
             },
             {
                 "label": "Confirm new password",
                 "value": "cnpwd",
                 "type": "password",
-                "required": false,
+                "required": true,
                 "rows": null
             }
         ],
@@ -1329,14 +1260,14 @@
         "type": "function",
         "z": "8980df89.7c554",
         "name": "Confirm",
-        "func": "var erpwd = {\n    payload: 1\n}\nvar erform = {\n    payload:-1\n}\nvar ok = {\n    payload:0\n}\nvar eropwd = {\n    payload: 2\n}\nvar erouname = {\n    payload: 3\n}\nif (msg.payload.uname != \"\" && msg.payload.ouname != \"\" && msg.payload.opwd != \"\" && msg.payload.cnpwd != \"\" && msg.payload.npwd != \"\" )\n{\n    if (msg.payload.npwd != msg.payload.cnpwd)\n        return erpwd\n    if (msg.payload.ouname != global.get(\"account\").uname)\n        return erouname\n    if (msg.payload.opwd != global.get(\"account\").pwd)\n        return eropwd\n    global.set(\"account\",{uname: msg.payload.uname, pwd: msg.payload.npwd})\n    return ok\n}\nreturn erform",
+        "func": "var erpwd = {\n    payload: 1\n}\nvar ok = {\n    payload:0\n}\nvar eropwd = {\n    payload: 2\n}\nvar erouname = {\n    payload: 3\n}\nif (msg.payload.npwd != msg.payload.cnpwd)\n        return erpwd\n    if (msg.payload.ouname != global.get(\"account\").uname)\n        return erouname\n    if (msg.payload.opwd != global.get(\"account\").pwd)\n        return eropwd\nglobal.set(\"account\",{uname: msg.payload.uname, pwd: msg.payload.npwd})\nreturn ok",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 160,
-        "y": 500,
+        "x": 300,
+        "y": 560,
         "wires": [
             [
                 "6f81d1c.379643"
@@ -1417,34 +1348,26 @@
             },
             {
                 "t": "eq",
-                "v": "-1",
+                "v": "2",
                 "vt": "num"
             },
             {
                 "t": "eq",
-                "v": "2",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
                 "v": "3",
-                "vt": "str"
+                "vt": "num"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 5,
-        "x": 430,
-        "y": 540,
+        "outputs": 4,
+        "x": 470,
+        "y": 640,
         "wires": [
             [
                 "6a6be36a.c733cc"
             ],
             [
                 "b6e764b6.152c08"
-            ],
-            [
-                "9ed62659.f7b958"
             ],
             [
                 "3bd8f7ab.ee6af8"
@@ -1473,8 +1396,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 360,
-        "y": 480,
+        "x": 560,
+        "y": 540,
         "wires": [
             [
                 "aa91de1d.23ee1"
@@ -1500,8 +1423,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 680,
-        "y": 580,
+        "x": 640,
+        "y": 620,
         "wires": [
             [
                 "aa91de1d.23ee1"
@@ -1527,8 +1450,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 670,
-        "y": 620,
+        "x": 650,
+        "y": 300,
         "wires": [
             [
                 "aa91de1d.23ee1"
@@ -1554,8 +1477,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 680,
-        "y": 540,
+        "x": 640,
+        "y": 580,
         "wires": [
             [
                 "aa91de1d.23ee1"
@@ -1985,8 +1908,8 @@
         "correl": "",
         "expiry": "",
         "broker": "6599e412.12713c",
-        "x": 290,
-        "y": 620,
+        "x": 250,
+        "y": 640,
         "wires": []
     },
     {
@@ -2036,7 +1959,7 @@
         "correl": "",
         "expiry": "",
         "broker": "6599e412.12713c",
-        "x": 260,
+        "x": 240,
         "y": 680,
         "wires": []
     },
@@ -2180,8 +2103,8 @@
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 110,
-        "y": 760,
+        "x": 100,
+        "y": 800,
         "wires": [
             [
                 "523fa0f.c86966"
@@ -2199,8 +2122,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 300,
-        "y": 760,
+        "x": 260,
+        "y": 800,
         "wires": [
             [
                 "b88d8eb7.8e588"
@@ -2213,10 +2136,119 @@
         "z": "8980df89.7c554",
         "name": "Logout session",
         "events": "all",
-        "x": 500,
-        "y": 760,
+        "x": 440,
+        "y": 800,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "b3f933c8.60061",
+        "type": "ui_form",
+        "z": "8980df89.7c554",
+        "name": "Email",
+        "label": "",
+        "group": "8ca6549a.4df1c8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Email",
+                "value": "email",
+                "type": "text",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "email": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "x": 90,
+        "y": 420,
+        "wires": [
+            [
+                "782db343.5a7fbc"
+            ]
+        ]
+    },
+    {
+        "id": "2023c4ef.bb43cc",
+        "type": "change",
+        "z": "8980df89.7c554",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "setting",
+                "pt": "global",
+                "to": "{\"max_ph\": null, \"min_ph\":null, \"max_temp\":null, \"min_temp\":null}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b3cdc291.282e",
+        "type": "inject",
+        "z": "8980df89.7c554",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 80,
+        "wires": [
+            [
+                "2023c4ef.bb43cc"
+            ]
+        ]
+    },
+    {
+        "id": "782db343.5a7fbc",
+        "type": "function",
+        "z": "8980df89.7c554",
+        "name": "set email",
+        "func": "var tmp = global.get(\"setting\")\ntmp.email = msg.payload.email\nglobal.set(\"setting\", tmp)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 240,
+        "y": 420,
+        "wires": [
+            [
+                "3ea29d2.fdbec62"
+            ]
         ]
     }
 ]
