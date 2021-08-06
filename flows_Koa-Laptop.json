@@ -62,7 +62,7 @@
             },
             "darkTheme": {
                 "default": "#097479",
-                "baseColor": "#10b9c1",
+                "baseColor": "#005457",
                 "baseFont": "Tahoma,Geneva,sans-serif",
                 "edited": true,
                 "reset": false
@@ -77,11 +77,11 @@
             "themeState": {
                 "base-color": {
                     "default": "#097479",
-                    "value": "#10b9c1",
+                    "value": "#005457",
                     "edited": true
                 },
                 "page-titlebar-backgroundColor": {
-                    "value": "#10b9c1",
+                    "value": "#005457",
                     "edited": false
                 },
                 "page-backgroundColor": {
@@ -89,11 +89,11 @@
                     "edited": true
                 },
                 "page-sidebar-backgroundColor": {
-                    "value": "#ffffff",
+                    "value": "#333333",
                     "edited": false
                 },
                 "group-textColor": {
-                    "value": "#30e5ee",
+                    "value": "#009ea3",
                     "edited": false
                 },
                 "group-borderColor": {
@@ -109,7 +109,7 @@
                     "edited": true
                 },
                 "widget-backgroundColor": {
-                    "value": "#10b9c1",
+                    "value": "#005457",
                     "edited": false
                 },
                 "widget-borderColor": {
@@ -121,11 +121,11 @@
                 }
             },
             "angularTheme": {
-                "primary": "blue",
-                "accents": "pink",
+                "primary": "indigo",
+                "accents": "blue",
                 "warn": "red",
-                "background": "blue",
-                "palette": "dark"
+                "background": "grey",
+                "palette": "light"
             }
         },
         "site": {
@@ -1035,7 +1035,7 @@
         "type": "ui_text",
         "z": "8980df89.7c554",
         "group": "949bac93.8ca2",
-        "order": 3,
+        "order": 4,
         "width": 0,
         "height": 0,
         "name": "Max pH",
@@ -1051,7 +1051,7 @@
         "type": "ui_text",
         "z": "8980df89.7c554",
         "group": "949bac93.8ca2",
-        "order": 4,
+        "order": 3,
         "width": 0,
         "height": 0,
         "name": "Min pH",
@@ -1358,7 +1358,7 @@
         "topic": "topic",
         "topicType": "msg",
         "splitLayout": "",
-        "x": 130,
+        "x": 170,
         "y": 560,
         "wires": [
             [
