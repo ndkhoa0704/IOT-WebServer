@@ -935,7 +935,7 @@
         "type": "function",
         "z": "8980df89.7c554",
         "name": "Setting",
-        "func": "var tmp = global.get(\"Fish\")\nvar str_temp = tmp[flow.get(\"Chosen\")][1]\nvar str_ph = tmp[flow.get(\"Chosen\")][2]\nvar arr_temp = str_temp.split(\"-\")\nvar arr_ph = str_ph.split(\"-\")\nvar obj = {\n    max_ph: arr_ph[1],\n    min_ph: arr_ph[0],\n    max_temp: arr_temp[1],\n    min_temp: arr_temp[0],\n    email: global.get(\"setting\").email\n}\n\nglobal.set(\"setting\", obj)\nreturn msg",
+        "func": "var tmp = flow.get(\"fish\")\nvar str_temp = tmp[flow.get(\"Chosen\")][1]\nvar str_ph = tmp[flow.get(\"Chosen\")][2]\nvar arr_temp = str_temp.split(\"-\")\nvar arr_ph = str_ph.split(\"-\")\nvar obj = {\n    max_ph: arr_ph[1],\n    min_ph: arr_ph[0],\n    max_temp: arr_temp[1],\n    min_temp: arr_temp[0],\n    email: global.get(\"setting\").email\n}\n\nglobal.set(\"setting\", obj)\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1628,7 +1628,7 @@
         "cells": "Sheet1!A2:F8",
         "flatten": false,
         "name": "",
-        "x": 350,
+        "x": 330,
         "y": 160,
         "wires": [
             [
@@ -1660,7 +1660,7 @@
         "payload": "",
         "topic": "topic",
         "topicType": "msg",
-        "x": 720,
+        "x": 620,
         "y": 160,
         "wires": [
             [
@@ -1673,13 +1673,13 @@
         "type": "function",
         "z": "b040149.50cdce8",
         "name": "GetData",
-        "func": "var tmp1 = []\nvar tmp2 = []\nfor (var i = 0; i < msg.payload.length; i++)\n{\n    var t_obj = {};\n    t_obj[msg.payload[i][0]] = i\n    tmp1.push(t_obj)\n    tmp2.push(msg.payload[i])\n}\nglobal.set(\"Fish\",tmp2);\nvar newMsg = {\n    options: tmp1\n}\nreturn newMsg;",
+        "func": "var tmp1 = []\nvar tmp2 = []\nfor (var i = 0; i < msg.payload.length; i++)\n{\n    var t_obj = {};\n    t_obj[msg.payload[i][0]] = i\n    tmp1.push(t_obj)\n    tmp2.push(msg.payload[i])\n}\nflow.set(\"fish\", tmp2)\nvar newMsg = {\n    options: tmp1\n}\nreturn newMsg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 540,
+        "x": 480,
         "y": 160,
         "wires": [
             [
@@ -1730,8 +1730,8 @@
         "fwdInMessages": true,
         "resendOnRefresh": true,
         "templateScope": "local",
-        "x": 580,
-        "y": 300,
+        "x": 940,
+        "y": 120,
         "wires": [
             []
         ]
@@ -1741,14 +1741,14 @@
         "type": "function",
         "z": "b040149.50cdce8",
         "name": "PrintData",
-        "func": "var fish = global.get(\"Fish\")\nvar newMsg = {\n    payload: fish[msg.payload]\n}\nreturn newMsg;",
+        "func": "var fish = flow.get(\"fish\")\nvar newMsg = {\n    payload: fish[msg.payload]\n}\nreturn newMsg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 280,
-        "y": 300,
+        "x": 760,
+        "y": 160,
         "wires": [
             [
                 "ba4d7178.dc48",
@@ -1770,8 +1770,8 @@
         "fwdInMessages": true,
         "resendOnRefresh": true,
         "templateScope": "local",
-        "x": 580,
-        "y": 380,
+        "x": 940,
+        "y": 200,
         "wires": [
             []
         ]
@@ -2251,7 +2251,7 @@
         "type": "function",
         "z": "8980df89.7c554",
         "name": "GetData",
-        "func": "var tmp1 = []\nvar tmp2 = []\nfor (var i = 0; i < msg.payload.length; i++)\n{\n    var t_obj = {};\n    t_obj[msg.payload[i][0]] = i\n    tmp1.push(t_obj)\n    tmp2.push(msg.payload[i])\n}\nglobal.set(\"Fish\",tmp2);\nvar newMsg = {\n    options: tmp1\n}\nreturn newMsg;",
+        "func": "var tmp1 = []\nvar tmp2 = []\nfor (var i = 0; i < msg.payload.length; i++)\n{\n    var t_obj = {};\n    t_obj[msg.payload[i][0]] = i\n    tmp1.push(t_obj)\n    tmp2.push(msg.payload[i])\n}\nflow.set(\"fish\",tmp2);\nvar newMsg = {\n    options: tmp1\n}\nreturn newMsg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
