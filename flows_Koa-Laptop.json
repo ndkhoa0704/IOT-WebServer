@@ -655,7 +655,7 @@
         "name": "Custom condition",
         "label": "<i class=\"fa fa-wrench\" aria-hidden=\"true\"></i> Custom condition",
         "group": "8ca6549a.4df1c8",
-        "order": 2,
+        "order": 4,
         "width": 0,
         "height": 0,
         "options": [
@@ -1103,7 +1103,8 @@
         "y": 480,
         "wires": [
             [
-                "1c8ac217.4a4b6e"
+                "1c8ac217.4a4b6e",
+                "4b36d231.47b67c"
             ]
         ]
     },
@@ -2204,7 +2205,7 @@
         "tooltip": "",
         "place": "Select fish",
         "group": "8ca6549a.4df1c8",
-        "order": 1,
+        "order": 3,
         "width": 0,
         "height": 0,
         "passthru": true,
@@ -2306,5 +2307,21 @@
                 "6d1f7e6a.b3d5d"
             ]
         ]
+    },
+    {
+        "id": "4b36d231.47b67c",
+        "type": "pushover",
+        "z": "df3448ae.3b3be8",
+        "name": "",
+        "device": "",
+        "title": "",
+        "priority": 0,
+        "sound": "bugle",
+        "url": "",
+        "url_title": "",
+        "html": false,
+        "x": 760,
+        "y": 560,
+        "wires": []
     }
 ]
