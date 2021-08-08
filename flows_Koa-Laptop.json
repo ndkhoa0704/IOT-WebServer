@@ -356,8 +356,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 320,
-        "y": 280,
+        "x": 310,
+        "y": 240,
         "wires": [
             [
                 "7ac4529d.753f2c",
@@ -368,7 +368,11 @@
                 "9edb3015.c8637",
                 "cf55ff0f.0602e",
                 "c80ce104.916eb",
-                "2aa4e551.2961ea"
+                "2aa4e551.2961ea",
+                "edda49db.546848",
+                "3e705f21.527e2",
+                "f910aa3c.5f5348",
+                "9e7f10b.d1338f"
             ]
         ]
     },
@@ -1076,7 +1080,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 410,
+        "x": 490,
         "y": 480,
         "wires": [
             [
@@ -1099,7 +1103,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 610,
+        "x": 650,
         "y": 480,
         "wires": [
             [
@@ -1493,8 +1497,8 @@
         "z": "df3448ae.3b3be8",
         "order": 1,
         "group": "6cceee71.9d0ba",
-        "width": 0,
-        "height": 0,
+        "width": "0",
+        "height": "0",
         "label": "<i class=\"fa fa-lightbulb-o\" aria-hidden=\"true\"></i> LED Status ",
         "labelPlacement": "left",
         "labelAlignment": "left",
@@ -1524,8 +1528,8 @@
         "z": "df3448ae.3b3be8",
         "order": 2,
         "group": "6cceee71.9d0ba",
-        "width": 0,
-        "height": 0,
+        "width": "0",
+        "height": "0",
         "label": "<i class=\"fa fa-snowflake-o\" aria-hidden=\"true\"></i> Fan ",
         "labelPlacement": "left",
         "labelAlignment": "left",
@@ -2181,7 +2185,7 @@
         "id": "f8be2467.5690f8",
         "type": "template",
         "z": "27157737.c8f3b8",
-        "name": "",
+        "name": "Login fail",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
@@ -2320,8 +2324,288 @@
         "url": "",
         "url_title": "",
         "html": false,
-        "x": 760,
-        "y": 560,
+        "x": 820,
+        "y": 540,
         "wires": []
+    },
+    {
+        "id": "f7773b96.dbdca8",
+        "type": "ui_chart",
+        "z": "df3448ae.3b3be8",
+        "name": "",
+        "group": "6cceee71.9d0ba",
+        "order": 2,
+        "width": "3",
+        "height": "3",
+        "label": "Water",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 290,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "edda49db.546848",
+        "type": "change",
+        "z": "df3448ae.3b3be8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.water",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 140,
+        "y": 300,
+        "wires": [
+            [
+                "f7773b96.dbdca8"
+            ]
+        ]
+    },
+    {
+        "id": "43e236b3.5ab0e8",
+        "type": "ui_chart",
+        "z": "df3448ae.3b3be8",
+        "name": "Food",
+        "group": "6cceee71.9d0ba",
+        "order": 2,
+        "width": "3",
+        "height": "3",
+        "label": "Food",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 290,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3e705f21.527e2",
+        "type": "change",
+        "z": "df3448ae.3b3be8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.food",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 140,
+        "y": 340,
+        "wires": [
+            [
+                "43e236b3.5ab0e8"
+            ]
+        ]
+    },
+    {
+        "id": "d94cb749.e47378",
+        "type": "ui_chart",
+        "z": "df3448ae.3b3be8",
+        "name": "Temperature",
+        "group": "6cceee71.9d0ba",
+        "order": 2,
+        "width": "3",
+        "height": "3",
+        "label": "Temperature",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 310,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f910aa3c.5f5348",
+        "type": "change",
+        "z": "df3448ae.3b3be8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.temp",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 140,
+        "y": 380,
+        "wires": [
+            [
+                "d94cb749.e47378"
+            ]
+        ]
+    },
+    {
+        "id": "759a90ac.17a1",
+        "type": "ui_chart",
+        "z": "df3448ae.3b3be8",
+        "name": "",
+        "group": "6cceee71.9d0ba",
+        "order": 2,
+        "width": "3",
+        "height": "3",
+        "label": "pH",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 290,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9e7f10b.d1338f",
+        "type": "change",
+        "z": "df3448ae.3b3be8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.ph",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 140,
+        "y": 420,
+        "wires": [
+            [
+                "759a90ac.17a1"
+            ]
+        ]
     }
 ]
