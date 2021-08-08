@@ -318,7 +318,8 @@
         "wires": [
             [
                 "b2bf3a48.38e5b8",
-                "10727d2.6bf8a83"
+                "10727d2.6bf8a83",
+                "37f0ae2e.9ca312"
             ]
         ]
     },
@@ -1617,8 +1618,7 @@
         "y": 140,
         "wires": [
             [
-                "e96abb85.bd51f8",
-                "37f0ae2e.9ca312"
+                "e96abb85.bd51f8"
             ]
         ]
     },
@@ -2275,7 +2275,7 @@
         "type": "function",
         "z": "df3448ae.3b3be8",
         "name": "System failed",
-        "func": "var recipient = global.get(\"setting\")[\"email\"]\nif (msg.payload != false)\n    recipient = null\nvar newMsg = {\n    topic: \"[IAQUARIUM] Dangerous condition\",\n    to: recipient,\n    payload: \"SYSTEM IS NOT RESPONDING\"\n}\nreturn newMsg;",
+        "func": "var mesg = \"SYSTEM IS NOT RESPONDING\"\nif (msg.payload != false)\n    mesg = \"\"\nvar newMsg = {\n    topic: \"[IAQUARIUM] Dangerous condition\",\n    to: recipient,\n    payload: mesg\n}\nreturn newMsg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -2285,7 +2285,7 @@
         "y": 360,
         "wires": [
             [
-                "1c8ac217.4a4b6e"
+                "598ac109.efb69"
             ]
         ]
     },
