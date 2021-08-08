@@ -770,7 +770,7 @@
         "type": "function",
         "z": "8980df89.7c554",
         "name": "Verify",
-        "func": "global.set(\"setting\", msg.payload)\nvar err = {\n    payload: 0\n}\nif (msg.payload.max_ph < msg.payload.min_ph || msg.payload.max_temp < msg.payload.min_temp)\n    return err\nreturn {payload:1}",
+        "func": "var err = {\n    payload: 0\n}\nif (msg.payload.max_ph < msg.payload.min_ph || msg.payload.max_temp < msg.payload.min_temp)\n    return err\nglobal.set(\"setting\", msg.payload)\nreturn {payload:1}",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
