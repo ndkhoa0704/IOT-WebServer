@@ -2275,7 +2275,7 @@
         "type": "function",
         "z": "df3448ae.3b3be8",
         "name": "System failed",
-        "func": "var mesg = \"SYSTEM IS NOT RESPONDING\"\nif (msg.payload != false)\n    mesg = \"\"\nvar newMsg = {\n    topic: \"[IAQUARIUM] Dangerous condition\",\n    to: recipient,\n    payload: mesg\n}\nreturn newMsg;",
+        "func": "var mesg = \"SYSTEM IS NOT RESPONDING\"\nif (msg.payload != false)\n    mesg = \"\"\nvar newMsg = {\n    topic: \"[IAQUARIUM] Dangerous condition\",\n    to: global.get(\"setting\")[\"email\"],\n    payload: mesg\n}\nreturn newMsg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
